@@ -7,7 +7,7 @@ FoodTime is a web-based food delivery system developed to provide users with a c
 The system allows users to manage their shopping cart, place orders, view bills, manage their wallet, receive notifications, contact FoodTime, and manage their personal account.
 
 ## Features
-
+* **Authentication:** Sign up, login, and logout account.
 * **Food:** Browse foods by category, search by name/category, and view food details.
 * **Cart & Order:** Add, update, and remove food items from the cart, checkout, and place orders.
 * **Bill:** View bills and search/filter bills by Order ID and date.
