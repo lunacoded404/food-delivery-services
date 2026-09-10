@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../components/sidebar.css">
+    <link rel="stylesheet" href="./wallet.css">
+
+    <title>Wallet - FoodTime</title>
+</head>
+
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <div class="main">
+
+        <div class="main-navbar">
+
+            <ion-icon
+                class="menu-toggle"
+                name="menu-outline">
+            </ion-icon>
+
+            <div class="profile">
+                <a
+                    href="../cart/cart.html"
+                    class="cart"
+                >
+                    <ion-icon
+                        name="cart-outline">
+                    </ion-icon>
+
+                    <span
+                        id="cart-count"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+                </a>
+
+                <a
+                    href="../../pages/profile/profile.html"
+                    class="user"
+                >
+                    <ion-icon name="person-outline"></ion-icon>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="wallet-page">
+
+            <h2 class="wallet-title">
+                My Wallet
+            </h2>
+
+            <!-- Balance -->
+
+            <div class="wallet-balance-card">
+
+                <div class="wallet-balance-info">
+
+                    <p>Available Balance</p>
+
+                    <h1 id="wallet-balance">
+                        $0.00
+                    </h1>
+
+                </div>
+
+                <ion-icon
+                    name="wallet-outline"
+                    class="wallet-icon">
+                </ion-icon>
+
+            </div>
+
+
+            <!-- Deposit -->
+
+            <div class="wallet-section">
+
+                <div class="wallet-section-header">
+
+                    <h3>
+                        Add Money
+                    </h3>
+
+                </div>
+
+                <div class="deposit-form">
+
+                    <input
+                        type="number"
+                        id="deposit-amount"
+                        placeholder="Enter amount"
+                        min="1"
+                        step="0.01"
+                    >
+
+                    <button
+                        id="deposit-btn"
+                        class="deposit-btn">
+
+                        Add Money
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Transactions -->
+
+            <div class="wallet-section">
+
+                <div class="wallet-section-header">
+
+                    <h3>
+                        Transaction History
+                    </h3>
+
+                </div>
+
+                <div
+                    id="transaction-list"
+                    class="transaction-list">
+
+                    <p class="empty-transaction">
+                        No transactions yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+    </script>
+
+    <script
+        type="module"
+        src="../../js/components/sidebar.js">
+    </script>
+
+    <script
+        type="module"
+        src="../../js/wallet/wallet.js">
+    </script>
+
+    <script type="module" src="../../js/cart/cartBadge.js"></script>    
+
+</body>
+
+</html>

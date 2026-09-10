@@ -1,0 +1,183 @@
+.main-navbar {
+    display: flex; 
+    justify-content: flex-end; 
+}
+
+.notification-page {
+    padding: 2rem;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.5rem;
+}
+
+.notification-header h2 {
+    margin-bottom: 0.3rem;
+}
+
+.notification-header p {
+    color: #888;
+}
+
+#mark-all-read {
+    border: none;
+    background: none;
+
+    color: var(--primaryColor);
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.notification-list {
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.8rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 1rem;
+
+    padding: 1.2rem;
+
+    background-color: var(--whiteColor);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.06);
+
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.notification-item:hover {
+    transform: translateY(-2px);
+}
+
+.notification-item.unread {
+    border-left: 4px solid var(--primaryColor);
+}
+
+.notification-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: var(--primaryColor);
+
+    color: var(--whiteColor);
+
+    flex-shrink: 0;
+}
+
+.notification-icon ion-icon {
+    font-size: 22px;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+
+    margin-bottom: 0.3rem;
+}
+
+.notification-message {
+    color: #666;
+
+    line-height: 1.5;
+
+    margin-bottom: 0.4rem;
+}
+
+.notification-date {
+    font-size: 0.8rem;
+
+    color: #999;
+}
+
+.notification-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+}
+
+.notification-delete {
+    border: none;
+
+    background: none;
+
+    cursor: pointer;
+
+    color: #999;
+
+    font-size: 20px;
+}
+
+.notification-delete:hover {
+    color: #e74c3c;
+}
+
+.empty-notification {
+    text-align: center;
+
+    padding: 3rem;
+
+    color: #999;
+}
+
+.empty-notification ion-icon {
+    font-size: 3rem;
+
+    margin-bottom: 0.8rem;
+}
+
+
+/* Mobile */
+
+@media screen and (max-width: 640px) {
+
+    .notification-page {
+        padding: 1rem;
+    }
+
+    .notification-header {
+        align-items: flex-start;
+
+        gap: 1rem;
+    }
+
+    .notification-header button {
+        font-size: 0.8rem;
+    }
+
+    .notification-item {
+        padding: 1rem;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <link rel="stylesheet" href="../bills/bills.css">
+    <link rel="stylesheet" href="../../components/sidebar.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Miniver&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+    <title>Bills - FoodTime</title>
+</head>
+
+<body>
+    <div id="sidebar-container"></div>
+
+    <div class="main">
+        <div class="main-navbar">
+            <ion-icon
+                class="menu-toggle"
+                name="menu-outline">
+            </ion-icon>
+
+            <form class="search" id="bill-search-form">
+
+                <input
+                    type="text"
+                    id="bill-search-input"
+                    placeholder="Search your bills..."
+                >
+
+                <button
+                    type="submit"
+                    class="search-btn"
+                >
+                    Search
+                </button>
+
+            </form>
+
+            <div class="profile">
+                <a
+                    href="../cart/cart.html"
+                    class="cart"
+                >
+                    <ion-icon
+                        name="cart-outline">
+                    </ion-icon>
+
+                    <span
+                        id="cart-count"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+                </a>
+
+                <a
+                    href="../../pages/profile/profile.html"
+                    class="user"
+                >
+                    <ion-icon name="person-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+
+        <div class="bill-header">
+            <div>
+                <h2 class="main-title">My Bills</h2>
+                <p class="bill-subtitle">Manage and track your orders</p>
+            </div>
+
+            <div class="bill-date-filter">
+
+                <label for="bill-date">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="bill-date"
+                >
+
+                <button
+                    type="button"
+                    id="clear-date"
+                    class="clear-date-btn"
+                >
+                    Clear
+                </button>
+
+            </div>
+        </div>
+
+        <div
+            class="bill-list"
+            id="bill-list"
+        >
+        </div>
+    </div>
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+    </script>
+
+    <script
+        type="module"
+        src="../../js/components/sidebar.js">
+    </script>
+
+    <script type="module" src="../../js/cart/cartBadge.js"></script>
+
+    <script
+        type="module"
+        src="../../js/bills/bills.js">
+    </script>
+
+</body>
+
+</html>

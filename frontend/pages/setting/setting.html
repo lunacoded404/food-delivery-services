@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./setting.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../components/sidebar.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Miniver&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+    <title>Settings - FoodTime</title>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <div id="sidebar-container"></div>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <!-- =========================
+             NAVBAR
+        ========================== -->
+
+        <div class="main-navbar">
+
+            <ion-icon
+                class="menu-toggle"
+                name="menu-outline">
+            </ion-icon>
+
+            <div class="profile">
+
+                <a
+                    href="../cart/cart.html"
+                    class="cart"
+                >
+
+                    <ion-icon
+                        name="cart-outline">
+                    </ion-icon>
+
+                    <span
+                        id="cart-count"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="../profile/profile.html"
+                    class="user"
+                >
+
+                    <ion-icon
+                        name="person-outline">
+                    </ion-icon>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             PAGE HEADER
+        ========================== -->
+
+        <div class="setting-page-header">
+
+            <h1>Settings</h1>
+
+            <p>
+                Manage your account and preferences
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             PROFILE
+        ========================== -->
+
+        <section class="setting-section">
+
+            <div class="section-title">
+
+                <h2>Profile</h2>
+
+                <p>
+                    Manage your personal information
+                </p>
+
+            </div>
+
+
+            <div class="setting-card">
+
+                <form id="profile-form">
+
+                    <!-- =========================
+                         AVATAR
+                    ========================== -->
+
+                    <div class="profile-avatar">
+
+                        <div class="avatar-wrapper">
+
+                            <img
+                                id="avatar-preview"
+                                src="../../image/default-avatar.png"
+                                alt="Profile avatar"
+                                class="avatar"
+                            >
+
+                        </div>
+
+
+                        <label
+                            for="avatar"
+                            class="change-avatar"
+                        >
+                            Change Avatar
+                        </label>
+
+
+                        <input
+                            type="file"
+                            id="avatar"
+                            accept="image/*"
+                            hidden
+                        >
+
+
+                        <p>
+                            JPG, PNG or WEBP. Max 5MB.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =========================
+                         PROFILE FIELDS
+                    ========================== -->
+
+                    <div class="form-grid">
+
+                        <!-- First Name -->
+
+                        <div class="form-group">
+
+                            <label for="first-name">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="first-name"
+                                placeholder="Enter your first name"
+                            >
+
+                        </div>
+
+
+                        <!-- Last Name -->
+
+                        <div class="form-group">
+
+                            <label for="last-name">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="last-name"
+                                placeholder="Enter your last name"
+                            >
+
+                        </div>
+
+
+                        <!-- Username -->
+
+                        <div class="form-group">
+
+                            <label for="username">
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Username"
+                                readonly
+                            >
+
+                            <span class="input-hint">
+                                Username cannot be changed.
+                            </span>
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Email address"
+                                readonly
+                            >
+
+                            <span class="input-hint">
+                                Email cannot be changed.
+                            </span>
+
+                        </div>
+
+
+                        <!-- Phone -->
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter your phone number"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         SAVE PROFILE
+                    ========================== -->
+
+                    <div class="form-footer">
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+
+                            <ion-icon
+                                name="save-outline">
+                            </ion-icon>
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DELIVERY ADDRESSES
+        ========================== -->
+
+        <section class="setting-section">
+
+            <div class="section-title section-title-with-button">
+
+                <div>
+
+                    <h2>
+                        Delivery Addresses
+                    </h2>
+
+                    <p>
+                        Manage your delivery addresses
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="add-address-btn"
+                    class="primary-button"
+                >
+
+                    <ion-icon
+                        name="add-outline">
+                    </ion-icon>
+
+                    Add New Address
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="address-list"
+                class="address-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             NOTIFICATIONS
+        ========================== -->
+
+        <section class="setting-section">
+
+            <div class="section-title">
+
+                <h2>
+                    Notifications
+                </h2>
+
+                <p>
+                    Choose which notifications you want to receive
+                </p>
+
+            </div>
+
+
+            <div class="setting-card settings-list">
+
+                <!-- =========================
+                     EMAIL NOTIFICATIONS
+                ========================== -->
+
+                <div class="setting-item">
+
+                    <div class="setting-item-info">
+
+                        <div class="setting-item-icon">
+
+                            <ion-icon
+                                name="mail-outline">
+                            </ion-icon>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Email Notifications
+                            </h3>
+
+                            <p>
+                                Receive important updates through email
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="email-notifications"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =========================
+                     ORDER NOTIFICATIONS
+                ========================== -->
+
+                <div class="setting-item">
+
+                    <div class="setting-item-info">
+
+                        <div class="setting-item-icon">
+
+                            <ion-icon
+                                name="receipt-outline">
+                            </ion-icon>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Order Notifications
+                            </h3>
+
+                            <p>
+                                Receive updates about your orders
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="order-notifications"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =========================
+                     PROMOTIONAL NOTIFICATIONS
+                ========================== -->
+
+                <div class="setting-item">
+
+                    <div class="setting-item-info">
+
+                        <div class="setting-item-icon">
+
+                            <ion-icon
+                                name="pricetag-outline">
+                            </ion-icon>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Promotional Notifications
+                            </h3>
+
+                            <p>
+                                Receive special offers and promotions
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="promotional-notifications"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECURITY
+        ========================== -->
+
+        <section class="setting-section">
+            <h2>Security</h2>
+
+            <form id="password-form">
+
+                <div class="form-group">
+                    <label for="current-password">
+                        Current Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="current-password"
+                        placeholder="Enter current password"
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="new-password">
+                        New Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="new-password"
+                        placeholder="Enter new password"
+                        autocomplete="new-password"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">
+                        Confirm New Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        placeholder="Confirm new password"
+                        autocomplete="new-password"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    Change Password
+                </button>
+
+            </form>
+        </section>
+
+
+        <!-- =========================
+             ACCOUNT
+        ========================== -->
+
+        <section class="setting-section">
+
+            <div class="section-title">
+
+                <h2>
+                    Account
+                </h2>
+
+                <p>
+                    Manage your account
+                </p>
+
+            </div>
+
+
+            <div class="setting-card account-card">
+
+                <div class="setting-item-info">
+
+                    <div class="setting-item-icon account-icon">
+
+                        <ion-icon
+                            name="log-out-outline">
+                        </ion-icon>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Log Out
+                        </h3>
+
+                        <p>
+                            Sign out of your FoodTime account
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="logout-btn"
+                    class="logout-button"
+                >
+                    Log Out
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ADDRESS MODAL
+    ========================== -->
+
+    <div
+        id="address-modal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h3 id="address-modal-title">
+                        Add New Address
+                    </h3>
+
+                    <p>
+                        Add a delivery address to your account
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="close-address-btn"
+                    class="close-modal"
+                >
+
+                    <ion-icon
+                        name="close-outline">
+                    </ion-icon>
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 ADDRESS FORM
+            ========================== -->
+
+            <form id="address-form">
+
+                <!-- Receiver Name -->
+
+                <div class="form-group">
+
+                    <label for="receiver-name">
+                        Receiver Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="receiver-name"
+                        placeholder="Enter receiver name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="address-phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="address-phone"
+                        placeholder="Enter phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="form-group">
+
+                    <label for="delivery-address">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="delivery-address"
+                        rows="4"
+                        placeholder="Enter delivery address"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Default Address -->
+
+                <label class="default-checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="address-default"
+                    >
+
+                    <span>
+                        Set as default address
+                    </span>
+
+                </label>
+
+
+                <!-- Actions -->
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-address-btn"
+                        class="secondary-button"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Address
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         IONICONS
+    ========================== -->
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+    </script>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <script
+        type="module"
+        src="../../js/components/sidebar.js">
+    </script>
+
+
+    <!-- =========================
+         SETTING
+    ========================== -->
+
+    <script
+        type="module"
+        src="../../js/setting/setting.js">
+    </script>
+
+
+    <!-- =========================
+         CART BADGE
+    ========================== -->
+
+    <script
+        type="module"
+        src="../../js/cart/cartBadge.js">
+    </script>
+
+</body>
+
+</html>

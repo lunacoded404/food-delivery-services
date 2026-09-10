@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sign In</title>
+
+    <link
+        rel="stylesheet"
+        href="./auth.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <h1>Welcome Back</h1>
+
+            <p>
+                Sign in to your account.
+            </p>
+
+            <form id="login-form">
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <p
+                    id="login-error"
+                    class="error-message"
+                ></p>
+
+                <button type="submit">
+                    LOGIN
+                </button>
+
+            </form>
+
+            <p style="text-align: center;">
+                Don't have an account?
+
+                <a href="./register.html">
+                    Sign Up
+                </a>
+            </p>
+
+        </div>
+
+    </main>
+
+    <script
+        type="module"
+        src="../../js/auth/login.js"
+    ></script>
+
+</body>
+
+</html>

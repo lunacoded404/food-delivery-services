@@ -1,0 +1,196 @@
+
+.main-navbar {
+    display: flex; 
+    justify-content: flex-end; 
+}
+
+.wallet-page {
+    padding: 2rem;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.wallet-title {
+    margin-bottom: 1.5rem;
+    width: 800px; 
+}
+
+
+/* Balance */
+
+.wallet-balance-card {
+    width: 800px; 
+    padding: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 20px;
+
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+}
+
+.wallet-balance-info p {
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.wallet-balance-info h1 {
+    font-size: 2.2rem;
+}
+
+.wallet-icon {
+    font-size: 4rem;
+}
+
+
+/* Section */
+
+.wallet-section {
+    width: 800px;
+    margin-top: 2rem;
+
+    padding: 1.5rem;
+
+    border-radius: 15px;
+
+    background-color: var(--whiteColor);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.wallet-section-header {
+    margin-bottom: 1rem;
+}
+
+
+/* Deposit */
+
+.deposit-form {
+    display: flex;
+    gap: 1rem;
+}
+
+.deposit-form input {
+    flex: 1;
+
+    padding: 0.8rem 1rem;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.deposit-btn {
+    padding: 0.8rem 1.5rem;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+
+    cursor: pointer;
+}
+
+.deposit-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Transactions */
+
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem;
+
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.transaction-icon {
+    font-size: 1.5rem;
+}
+
+.transaction-name {
+    font-weight: 600;
+}
+
+.transaction-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.transaction-amount {
+    font-weight: 600;
+}
+
+.transaction-amount.deposit {
+    color: #2e8b57;
+}
+
+.transaction-amount.payment {
+    color: #e74c3c;
+}
+
+.transaction-amount.refund {
+    color: #3498db;
+}
+
+.empty-transaction {
+    color: #888;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 640px) {
+
+    .wallet-page {
+        padding: 1rem;
+    }
+
+    .wallet-balance-card {
+        padding: 1.5rem;
+    }
+
+    .wallet-balance-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .wallet-icon {
+        font-size: 3rem;
+    }
+
+    .deposit-form {
+        flex-direction: column;
+    }
+
+    .deposit-btn {
+        width: 100%;
+    }
+
+    .transaction-item {
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,535 @@
+:root {
+    --primaryColor: #0e6253;
+    --secondaryColor: #ffc107;
+    --whiteColor: #fff;
+    --blackColor: #222;
+    --softGreenColor: #d9f2ee;
+    --darkGreyColor: #a7a7a7;
+    --greyColor: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    max-width: auto;
+    height: max-content;
+    min-height: 100vh;
+    padding: 2%;
+    background-color: var(--softGreenColor);
+    margin-left: 250px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* Search */
+
+.search {
+    width: 60%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--whiteColor);
+    border-radius: 20px;
+}
+
+.search input {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.search-btn {
+    border: none;
+    color: var(--whiteColor);
+    background-color: var(--secondaryColor);
+    width: 120px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.search:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search-btn:hover {
+    background-color: var(--primaryColor);
+}
+
+
+/* Profile */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart,
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--whiteColor);
+    font-size: 20px;
+    color: var(--primaryColor);
+    text-decoration: none;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.cart {
+    position: relative;
+}
+
+
+.cart-count {
+    position: absolute;
+
+    top: -6px;
+    right: -8px;
+
+    min-width: 18px;
+    height: 18px;
+
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff4d4f;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+.cart:hover,
+.user:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+/* =========================
+   RECOMMENDATIONS
+========================= */
+
+.main-highlight {
+    margin: 3% 0;
+    padding: 2%;
+    background-color: var(--secondaryColor);
+    border-radius: 8px;
+}
+
+.main-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 20px;
+}
+
+.main-arrow {
+    font-size: 24px;
+}
+
+.back,
+.next {
+    cursor: pointer;
+}
+
+.back:hover,
+.next:hover {
+    color: var(--primaryColor);
+}
+
+
+/* Recommendation wrapper */
+
+.highlight-wrapper {
+    width: 100%;
+    display: flex;
+    padding: 1%;
+    border-radius: 8px;
+    gap: 1.5rem;
+    overflow-x: hidden;
+}
+
+
+/* Recommendation card */
+
+.highlight-card {
+    display: flex;
+    flex-direction: row;
+    min-width: 200px;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    border-radius: 8px;
+    padding: 5px; 
+    background-color: var(--greyColor);
+    cursor: pointer;
+}
+
+.highlight-card:hover {
+    background-color: var(--whiteColor);
+    box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
+}
+
+.highlight-img {
+    width: 50px; 
+    height: 60px; 
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.highlight-desc h5 {
+    color: var(--primaryColor);
+}
+
+.highlight-desc p {
+    margin-top: 7px; 
+    color: var(--blackColor);
+    font-size: 13px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.main-menus {
+    min-height: 100%;
+    background-color: var(--greyColor);
+    padding: 2%;
+    border-radius: 8px;
+}
+
+
+/* Category */
+
+.main-filter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+.back-menus,
+.next-menus {
+    cursor: pointer;
+}
+
+.back-menus:hover,
+.next-menus:hover {
+    color: var(--primaryColor);
+}
+
+
+/* Category wrapper */
+
+.filter-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100px;
+    gap: 1.2rem;
+}
+
+
+/* Category card */
+
+.filter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 80px;
+    height: 100%;
+    background-color: var(--whiteColor);
+    color: var(--blackColor);
+    border-radius: 8px;
+    border: 1px solid var(--softGreenColor);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-card.active {
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+}
+
+.filter-card.active .filter-icon {
+    background-color: var(--whiteColor);
+}
+
+.filter-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60%;
+    font-size: 30px;
+    background-color: var(--softGreenColor);
+    color: var(--primaryColor);
+    border-radius: 8px;
+}
+
+.filter-card:hover {
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+}
+
+.filter-card:hover .filter-icon {
+    background-color: var(--whiteColor);
+}
+
+
+/* Divider */
+
+.divider {
+    margin: 1rem 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primaryColor);
+    border: none;
+}
+
+
+/* =========================
+   CHOOSE ORDER
+========================= */
+
+/* =========================
+   CHOOSE ORDER
+========================= */
+
+.main-detail {
+    margin: 1rem 0 1.5rem 0;
+}
+
+
+/* Food wrapper */
+
+.detail-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 1rem;
+    gap: 20px;
+}
+
+
+/* =========================
+   FOOD CARD
+========================= */
+
+.detail-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    cursor: pointer;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+/* =========================
+   FOOD IMAGE
+========================= */
+
+.detail-card .highlight-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================
+   FOOD INFORMATION
+========================= */
+
+.detail-card .highlight-desc {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    padding: 2rem 1rem 1rem;
+
+    color: var(--whiteColor);
+    text-align: center;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        rgba(0, 0, 0, 0.75) 70%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+}
+
+
+/* Food name */
+
+.detail-card .highlight-desc h4 {
+    margin: 0 0 5px;
+
+    color: var(--whiteColor);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+/* Food description */
+
+.detail-card .highlight-desc .food-description {
+    margin: 0 0 5px;
+
+    color: var(--whiteColor);
+    font-size: 12px;
+    line-height: 1.4;
+
+    /* Chỉ hiển thị tối đa 2 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* Food price */
+
+.detail-card .highlight-desc .food-price {
+    margin: 0;
+
+    color: var(--secondaryColor);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FOOD CARD HOVER
+========================= */
+
+.detail-card:hover .highlight-desc h4 {
+    color: var(--secondaryColor);
+}
+
+.detail-card:hover .highlight-desc .food-price {
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 900px) {
+
+    .detail-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 640px) {
+
+    .main {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        font-size: 20px;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        height: 40px;
+        border-radius: 50%;
+        z-index: 3;
+    }
+
+
+    /* Search */
+
+    .search {
+        width: 60%;
+    }
+
+
+    /* Food */
+
+    .detail-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-card {
+        height: 250px;
+    }
+
+    .detail-card .highlight-img {
+        width: 100%;
+        height: 100%;
+    }
+
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../components/sidebar.css">
+    <link rel="stylesheet" href="./profile.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Miniver&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+    <title>My Profile - Food Delivery Services</title>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <div class="main">
+
+        <!-- Navbar -->
+        <div class="main-navbar">
+
+            <ion-icon
+                class="menu-toggle"
+                name="menu-outline">
+            </ion-icon>
+
+            <div class="search">
+                <input
+                    type="text"
+                    placeholder="What you want to eat?"
+                >
+
+                <button class="search-btn">
+                    Search
+                </button>
+            </div>
+
+            <div class="profile">
+
+                <a
+                    href="../cart/cart.html"
+                    class="cart"
+                >
+                    <ion-icon name="cart-outline"></ion-icon>
+                </a>
+
+                <a
+                    href="./profile.html"
+                    class="user active"
+                >
+                    <ion-icon name="person-outline"></ion-icon>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile Page -->
+        <div class="profile-page">
+
+            <!-- Header -->
+            <div class="profile-page-header">
+
+                <div>
+                    <h1>
+                        My Profile
+                    </h1>
+
+                    <p>
+                        Manage your personal information
+                        and delivery details.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Profile Overview -->
+            <section class="profile-card profile-overview">
+
+                <div class="profile-avatar-wrapper">
+
+                    <img
+                        id="profile-avatar"
+                        src="../../image/default-avatar.png"
+                        alt="Profile Avatar"
+                    >
+
+                    <button
+                        type="button"
+                        class="avatar-edit"
+                        id="change-avatar-btn"
+                    >
+                        <ion-icon name="camera-outline"></ion-icon>
+                    </button>
+
+                    <input
+                        type="file"
+                        id="avatar-input"
+                        accept="image/*"
+                        hidden
+                    >
+
+                </div>
+
+                <div class="profile-overview-info">
+
+                    <h2 id="profile-name">
+                        User Name
+                    </h2>
+
+                    <p id="profile-username">
+                        @username
+                    </p>
+
+                    <span class="profile-status">
+                        <span></span>
+                        Active account
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- Personal Information -->
+            <section class="profile-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>
+                            Personal Information
+                        </h2>
+
+                        <p>
+                            Update your basic account information.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="profile-form">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="first-name">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="first-name"
+                                placeholder="First name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="last-name">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="last-name"
+                                placeholder="Last name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="username">
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                disabled
+                            >
+
+                            <small>
+                                Username cannot be changed.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                disabled
+                            >
+
+                            <small>
+                                Email is linked to your account.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter your phone number"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            <ion-icon name="save-outline"></ion-icon>
+                            Save Changes
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- Delivery Address -->
+            <section class="profile-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>
+                            Delivery Address
+                        </h2>
+
+                        <p>
+                            Manage your saved delivery addresses.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="add-address-btn"
+                    >
+                        <ion-icon name="add-outline"></ion-icon>
+                        Add Address
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="address-list"
+                    id="address-list"
+                >
+
+                    <!-- Address generated by JS -->
+
+                </div>
+
+            </section>
+
+
+            <!-- Account Security -->
+            <section class="profile-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>
+                            Account Security
+                        </h2>
+
+                        <p>
+                            Keep your account secure.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div class="security-icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </div>
+
+                    <div class="security-info">
+
+                        <h3>
+                            Password
+                        </h3>
+
+                        <p>
+                            Change your account password
+                            regularly to keep your account secure.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="../setting/setting.html#security"
+                        class="secondary-btn"
+                    >
+                        Change Password
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- Logout -->
+            <section class="profile-card logout-card">
+
+                <div>
+
+                    <h2>
+                        Log Out
+                    </h2>
+
+                    <p>
+                        Sign out of your Food Delivery account
+                        on this device.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logout-btn"
+                >
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Log Out
+                </button>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- Address Modal -->
+    <div
+        class="modal"
+        id="address-modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2 id="address-modal-title">
+                        Add Address
+                    </h2>
+
+                    <p>
+                        Enter your delivery information.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="close-address-btn"
+                >
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+            </div>
+
+
+            <form id="address-form">
+
+                <div class="form-group">
+
+                    <label for="receiver-name">
+                        Receiver Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="receiver-name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address-phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="address-phone"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="delivery-address">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="delivery-address"
+                        rows="4"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <label class="checkbox-wrapper">
+
+                    <input
+                        type="checkbox"
+                        id="address-default"
+                    >
+
+                    <span>
+                        Set as default address
+                    </span>
+
+                </label>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancel-address-btn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Save Address
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Ionicons -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+    </script>
+
+
+    <!-- Sidebar -->
+    <script
+        type="module"
+        src="../../js/components/sidebar.js">
+    </script>
+
+
+    <!-- Profile -->
+    <script
+        type="module"
+        src="../../js/profile/profile.js">
+    </script>
+
+</body>
+
+</html>

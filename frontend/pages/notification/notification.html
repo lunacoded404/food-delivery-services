@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../components/sidebar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./notification.css"
+    >
+
+    <title>Notifications - FoodTime</title>
+
+</head>
+
+<body>
+
+    <div id="sidebar-container"></div>
+
+
+    <div class="main">
+
+        <div class="main-navbar">
+
+            <ion-icon
+                class="menu-toggle"
+                name="menu-outline">
+            </ion-icon>
+
+
+            <div class="profile">
+
+                <a
+                    href="../cart/cart.html"
+                    class="cart"
+                >
+
+                    <ion-icon
+                        name="cart-outline">
+                    </ion-icon>
+
+                    <span
+                        id="cart-count"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="../profile/profile.html"
+                    class="user"
+                >
+
+                    <ion-icon
+                        name="person-outline">
+                    </ion-icon>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification-page">
+
+            <div class="notification-header">
+
+                <div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        Stay updated with your orders
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="mark-all-read"
+                >
+                    Mark all as read
+                </button>
+
+            </div>
+
+
+            <div
+                id="notification-list"
+                class="notification-list"
+            >
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+    </script>
+
+
+    <script
+        type="module"
+        src="../../js/components/sidebar.js">
+    </script>
+
+
+    <script
+        type="module"
+        src="../../js/notification/notification.js">
+    </script>
+
+
+    <script
+        type="module"
+        src="../../js/cart/cartBadge.js">
+    </script>
+
+</body>
+
+</html>
