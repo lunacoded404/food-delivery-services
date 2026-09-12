@@ -2,7 +2,6 @@ import {
     logoutUser
 } from "../api/authApi.js";
 
-
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
@@ -29,15 +28,16 @@ document.addEventListener(
 
             }
 
-            const sidebar =
+            const sidebarHtml =
                 await response.text();
 
             sidebarContainer.innerHTML =
-                sidebar;
+                sidebarHtml;
 
             setupSidebarLinks();
             setupLogout();
             setActiveSidebar();
+            setupMobileMenuToggle(); 
 
         } catch (error) {
 
@@ -291,4 +291,27 @@ function setActiveSidebar() {
 
     });
 
+}
+
+
+function setupMobileMenuToggle() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-open', sidebar.classList.contains('active'));
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 640) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+                }
+            }
+        });
+    }
 }

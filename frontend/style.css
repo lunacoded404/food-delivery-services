@@ -247,21 +247,21 @@
 /* Category */
 
 .main-filter {
-    width: 100%;
+    position: relative;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-top: 1.5rem;
+    justify-content: space-between;
     gap: 1rem;
 }
 
-.back-menus,
-.next-menus {
+.category-back,
+.category-next {
     cursor: pointer;
+    font-size: 24px;
 }
 
-.back-menus:hover,
-.next-menus:hover {
+.category-back:hover,
+.category-next:hover {
     color: var(--primaryColor);
 }
 
@@ -271,12 +271,18 @@
 .filter-wrapper {
     display: flex;
     justify-content: flex-start;
-    overflow-x: hidden;
+    align-items: center;
+    overflow-x: auto; /* Cho phép cuộn ngang */
+    scroll-behavior: smooth;
     width: 100%;
     height: 100px;
     gap: 1.2rem;
+    scrollbar-width: none; /* Ẩn scrollbar trên Firefox */
 }
 
+.filter-wrapper::-webkit-scrollbar {
+    display: none; /* Ẩn scrollbar trên Chrome, Safari */
+}
 
 /* Category card */
 
@@ -498,15 +504,30 @@
 
     .menu-toggle {
         display: flex;
-        font-size: 20px;
-        background-color: var(--whiteColor);
+        font-size: 20px; 
         color: var(--primaryColor);
         justify-content: center;
         align-items: center;
-        padding: 0 10px;
-        height: 40px;
+        padding: 8px;
         border-radius: 50%;
-        z-index: 3;
+        cursor: pointer;
+        z-index: 100;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu-toggle:hover {
+        background-color: var(--secondaryColor);
+        color: var(--whiteColor);
+    }
+
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px; 
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
     }
 
 
@@ -532,4 +553,14 @@
         height: 100%;
     }
 
+    .sidebar {
+        display: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar.active {
+        display: flex !important;
+        z-index: 1000;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px;
+    }
 }

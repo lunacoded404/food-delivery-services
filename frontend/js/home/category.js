@@ -7,6 +7,38 @@ import {
 } from "./food.js";
 
 
+const categoryWrapper = document.getElementById('category-list');
+const categoryBack = document.querySelector('.category-back');
+const categoryNext = document.querySelector('.category-next');
+
+if (categoryBack && categoryNext && categoryWrapper) {
+    categoryBack.addEventListener('click', () => {
+        categoryWrapper.scrollLeft -= 200; // Điều chỉnh khoảng cuộn tùy ý
+    });
+
+    categoryNext.addEventListener('click', () => {
+        categoryWrapper.scrollLeft += 200;
+    });
+}
+
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 640) {
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
+        }
+    });
+}
+
+
 export async function loadCategories() {
 
     try {
