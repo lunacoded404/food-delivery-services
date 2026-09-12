@@ -194,6 +194,14 @@ body {
     transform: translateY(1px);
 }
 
+.auth-card button:disabled {
+    background: #ffb094;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
 
 /* ================================
    AUTH LINKS

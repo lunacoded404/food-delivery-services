@@ -2,10 +2,14 @@ import {
     registerUser
 } from "../api/authApi.js";
 
-
 const form =
     document.querySelector(
         "#register-form"
+    );
+
+const submitButton =
+    form.querySelector(
+        "button[type='submit']"
     );
 
 const errorMessage =
@@ -13,13 +17,14 @@ const errorMessage =
         "#register-error"
     );
 
-
 form.addEventListener(
     "submit",
     async (event) => {
 
         event.preventDefault();
 
+        submitButton.disabled = true;
+        submitButton.textContent = "Signing up...";
         errorMessage.textContent = "";
 
         const username =
@@ -43,7 +48,6 @@ form.addEventListener(
             document
                 .querySelector("#password-confirm")
                 .value;
-
 
         try {
 
@@ -73,33 +77,23 @@ form.addEventListener(
             if (data?.username) {
                 errorMessage.textContent =
                     data.username[0];
-
-                return;
-            }
-
-            if (data?.email) {
+            } else if (data?.email) {
                 errorMessage.textContent =
                     data.email[0];
-
-                return;
-            }
-
-            if (data?.password_confirm) {
+            } else if (data?.password_confirm) {
                 errorMessage.textContent =
                     data.password_confirm[0];
-
-                return;
-            }
-
-            if (typeof data === "string") {
+            } else if (typeof data === "string") {
                 errorMessage.textContent =
                     data;
-
-                return;
+            } else {
+                errorMessage.textContent =
+                    "Registration failed.";
             }
 
-            errorMessage.textContent =
-                "Registration failed.";
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "SIGN UP";
         }
     }
 );
