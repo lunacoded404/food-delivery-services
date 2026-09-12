@@ -39,8 +39,6 @@ if os.getenv("RENDER_EXTERNAL_HOSTNAME"):
         os.getenv("RENDER_EXTERNAL_HOSTNAME")
     )
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 # Application definition
 
@@ -170,3 +168,11 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
 
+
+# Static files
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Media files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
