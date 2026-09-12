@@ -504,10 +504,42 @@
 
 @media screen and (max-width: 640px) {
 
-    .checkout-page {
-
-        padding: 4%;
-
+    .main {
+        margin-left: 0;
     }
 
+    
+    .menu-toggle {
+        display: flex;
+        font-size: 20px;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 3;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+    }
+
+    .checkout-page {
+        padding: 2%;
+    }
+
+    .checkout-card, 
+    .checkout-summary {
+        padding: 15px;
+    }
+
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px;
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+    }
 }

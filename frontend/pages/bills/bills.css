@@ -318,4 +318,26 @@
         justify-content: center;
     }
 
+    .main {
+        margin-left: 0;
+        padding: 4%;
+    }
+
+    .bill-date-filter {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #bill-date {
+        flex: 1;
+    }
+
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px; 
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+    }
 }

@@ -1034,8 +1034,19 @@
 
 @media screen and (max-width: 900px) {
 
-    .password-form {
-        grid-template-columns: 1fr;
+    #password-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    #password-form input {
+        width: 100%;
+    }
+
+    #password-form .save-btn {
+        margin-left: 0;
+        width: 100%;
     }
 
 }
@@ -1093,15 +1104,23 @@
 
 @media screen and (max-width: 640px) {
 
-    .setting-card {
-        padding: 1rem;
+    .main {
+        margin-left: 0;
+        padding: 4%;
     }
-
 
     .setting-page-header {
-        margin-bottom: 1.5rem;
+        margin-top: 2.5rem;
     }
 
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px; 
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+    }
 
     .setting-section {
         margin-bottom: 2rem;

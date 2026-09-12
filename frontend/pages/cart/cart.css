@@ -322,44 +322,87 @@
 }
 
 
-/* =========================
-   Responsive
-========================= */
+
+// Responsive
+
+@media screen and (min-width: 641px) {
+    .main {
+        margin-left: 250px !important;
+    }
+}
 
 @media screen and (max-width: 900px) {
+    .main {
+        margin-left: 250px;
+    }
 
     .cart-content {
         grid-template-columns: 1fr;
     }
 
-
     .cart-summary {
         position: static;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .main {
+        margin-left: 0 !important;
+        padding: 4%;
+    }
+
+    .cart-page {
+        padding: 0;
+    }
+
+    .cart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cart-content {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 15px;
+        padding: 14px;
+    }
+
+    .cart-food {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .cart-food img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .cart-actions {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 12px;
+    }
+
+    .cart-item-total {
+        text-align: left;
     }
 
 }
 
-
 @media screen and (max-width: 640px) {
-
-    .cart-header {
-        flex-direction: column;
-
-        align-items: flex-start;
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px; 
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
     }
-
-
-    .cart-item {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    .cart-actions {
-        width: 100%;
-
-        justify-content: space-between;
-    }
-
 }

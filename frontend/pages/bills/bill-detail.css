@@ -340,4 +340,22 @@
         min-width: 100px;
     }
 
+    .main {
+        margin-left: 0;
+        padding: 4%;
+    }
+
+    .bill-detail-card {
+        padding: 16px;
+    }
+
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px;
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+    }
+
 }

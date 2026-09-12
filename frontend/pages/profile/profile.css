@@ -722,6 +722,26 @@ body.dark-mode .modal-content {
     }
 }
 
+@media screen and (max-width: 640px) {
+
+    .main {
+        margin-left: 0;
+        padding: 4%;
+    }
+
+    .profile-page {
+        padding: 10px 0;
+    }
+
+    body.sidebar-open .menu-toggle {
+        position: fixed;
+        left: 195px; 
+        top: 15px;
+        z-index: 1001;
+        background-color: var(--whiteColor);
+        color: var(--primaryColor);
+    }
+}
 
 @media screen and (max-width: 480px) {
 

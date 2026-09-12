@@ -224,21 +224,64 @@ body {
 /* ================================
    RESPONSIVE
 ================================ */
+@media screen and (max-width: 768px) {
+    .auth-container {
+        padding: 25px 20px;
+    }
+
+    .auth-card {
+        max-width: 450px;
+        padding: 35px 30px;
+    }
+}
 
 @media (max-width: 480px) {
 
     .auth-container {
-        padding: 20px 15px;
+        padding: 15px 10px;
+        align-items: flex-start; 
+        padding-top: 40px;
     }
 
     .auth-card {
-        padding: 30px 22px;
-
-        border-radius: 16px;
+        width: 100%;
+        padding: 25px 20px;
+        border-radius: 14px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
 
     .auth-card h1 {
-        font-size: 28px;
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .auth-card > p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .auth-card form {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .auth-card input {
+        height: 45px;
+        font-size: 14px;
+        padding: 0 14px;
+    }
+
+    .auth-card button {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .error-message {
+        font-size: 13px !important;
+    }
+
+    .auth-card p[style*="text-align: center"] {
+        font-size: 13px;
     }
 
 }
