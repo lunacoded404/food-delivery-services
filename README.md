@@ -59,7 +59,6 @@ Navigate to the backend directory:
 
 ```bash
 cd backend
-```
 
 Create and activate a virtual environment:
 
@@ -79,9 +78,9 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-Configure the MySQL database in `settings.py`.
+Configure the Supabase PostgreSQL database connection in Django `settings.py`.
 
-Run migrations:
+Run database migrations:
 
 ```bash
 python manage.py migrate
@@ -93,7 +92,7 @@ Start the Django development server:
 python manage.py runserver
 ```
 
-The backend will run at:
+The backend API will be available at:
 
 ```text
 http://127.0.0.1:8000/
