@@ -8,7 +8,7 @@ The system allows users to manage their shopping cart, place orders, view bills,
 
 ## Demo
 
-[Live Demo](https://food-delivery-services.onrender.com)
+Live Demo: https://food-delivery-services.onrender.com
 
 ## Features
 
