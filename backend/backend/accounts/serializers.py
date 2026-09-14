@@ -1,6 +1,5 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
-
 from rest_framework import serializers
 
 from .models import (
@@ -9,10 +8,6 @@ from .models import (
     Address,
 )
 
-
-# =====================================
-# REGISTER
-# =====================================
 
 class RegisterSerializer(serializers.ModelSerializer):
 
@@ -38,7 +33,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
 
         if attrs["password"] != attrs["password_confirm"]:
-
             raise serializers.ValidationError({
                 "password_confirm":
                     "Passwords do not match."
@@ -61,14 +55,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-# =====================================
-# LOGIN
-# =====================================
-
 class LoginSerializer(serializers.Serializer):
-
     email = serializers.EmailField()
-
     password = serializers.CharField(
         write_only=True
     )
@@ -79,13 +67,11 @@ class LoginSerializer(serializers.Serializer):
         password = attrs["password"]
 
         try:
-
             user = User.objects.get(
                 email=email
             )
 
         except User.DoesNotExist:
-
             raise serializers.ValidationError(
                 "Invalid email or password."
             )
@@ -96,27 +82,21 @@ class LoginSerializer(serializers.Serializer):
         )
 
         if user is None:
-
             raise serializers.ValidationError(
                 "Invalid email or password."
             )
 
         if not user.is_active:
-
             raise serializers.ValidationError(
                 "This account is inactive."
             )
 
         attrs["user"] = user
-
         return attrs
 
 
-# =====================================
-# PROFILE
-# =====================================
-
 class ProfileSerializer(serializers.ModelSerializer):
+
     avatar_url = serializers.SerializerMethodField()
 
     class Meta:
@@ -147,24 +127,16 @@ class ProfileSerializer(serializers.ModelSerializer):
                 return request.build_absolute_uri(
                     obj.avatar.url
                 )
-
             return obj.avatar.url
 
         return None
 
 
-# =====================================
-# ADDRESS
-# =====================================
-
 class AddressSerializer(
     serializers.ModelSerializer
 ):
-
     class Meta:
-
         model = Address
-
         fields = [
             "id",
             "receiver_name",
@@ -182,28 +154,17 @@ class AddressSerializer(
         ]
 
 
-# =====================================
-# USER SETTINGS
-# =====================================
-
 class UserSettingsSerializer(
     serializers.ModelSerializer
 ):
-
     class Meta:
-
         model = UserSettings
-
         fields = [
             "email_notifications",
             "order_notifications",
             "promotional_notifications",
         ]
 
-
-# =====================================
-# CHANGE PASSWORD
-# =====================================
 
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(

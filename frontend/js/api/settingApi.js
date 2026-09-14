@@ -1,6 +1,5 @@
 import { apiRequest } from "./api.js";
 
-
 export async function getProfile() {
 
     return await apiRequest(
@@ -8,7 +7,6 @@ export async function getProfile() {
     );
 
 }
-
 
 export async function updateProfile(data) {
     return await apiRequest(
@@ -20,7 +18,6 @@ export async function updateProfile(data) {
     );
 }
 
-
 export async function getAddresses() {
 
     return await apiRequest(
@@ -29,11 +26,9 @@ export async function getAddresses() {
 
 }
 
-
 export async function createAddress(
     data
 ) {
-
     return await apiRequest(
         "/addresses/",
         {
@@ -48,12 +43,10 @@ export async function createAddress(
 
 }
 
-
 export async function updateAddress(
     id,
     data
 ) {
-
     return await apiRequest(
         `/addresses/${id}/`,
         {
@@ -68,11 +61,9 @@ export async function updateAddress(
 
 }
 
-
 export async function deleteAddress(
     id
 ) {
-
     return await apiRequest(
         `/addresses/${id}/`,
         {
@@ -82,11 +73,9 @@ export async function deleteAddress(
 
 }
 
-
 export async function setDefaultAddress(
     id
 ) {
-
     return await apiRequest(
         `/addresses/${id}/default/`,
         {
@@ -96,7 +85,6 @@ export async function setDefaultAddress(
 
 }
 
-
 export async function getSettings() {
 
     return await apiRequest(
@@ -105,11 +93,9 @@ export async function getSettings() {
 
 }
 
-
 export async function updateSettings(
     data
 ) {
-
     return await apiRequest(
         "/account/settings/",
         {
@@ -123,7 +109,6 @@ export async function updateSettings(
     );
 
 }
-
 
 export async function changePassword(data) {
     return await apiRequest("/account/change-password/", {

@@ -3,9 +3,8 @@ from .models import Order, OrderItem
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-
     food_image = serializers.SerializerMethodField()
-
+    
     class Meta:
         model = OrderItem
 

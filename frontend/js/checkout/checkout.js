@@ -4,18 +4,14 @@ import {
 
 
 let checkoutItems = [];
-
 const DELIVERY_FEE = 5;
-
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
         loadCheckoutItems();
-
         setupCheckout();
-
     }
 );
 
@@ -27,18 +23,13 @@ function loadCheckoutItems() {
             "checkout_items"
         );
 
-
     if (!data) {
 
         renderEmptyCheckout();
-
         return;
-
     }
 
-
     try {
-
         checkoutItems =
             JSON.parse(data);
 
@@ -50,14 +41,11 @@ function loadCheckoutItems() {
         );
 
         checkoutItems = [];
-
     }
-
 
     renderCheckout();
 
 }
-
 
 function renderCheckout() {
 
@@ -66,44 +54,35 @@ function renderCheckout() {
             "#checkout-items"
         );
 
-
     if (!container) {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     if (
         checkoutItems.length === 0
     ) {
 
         renderEmptyCheckout();
-
         return;
-
     }
 
 
     checkoutItems.forEach(
         item => {
-
             const element =
                 document.createElement(
                     "div"
                 );
 
-
             element.classList.add(
                 "checkout-item"
             );
 
-
             const subtotal =
                 Number(item.food_price) *
                 item.quantity;
-
 
             element.innerHTML = `
 
@@ -113,17 +92,14 @@ function renderCheckout() {
                     class="checkout-item-image"
                 >
 
-
                 <div
                     class="checkout-item-info"
                 >
-
                     <p
                         class="checkout-item-name"
                     >
                         ${item.food_name}
                     </p>
-
 
                     <p
                         class="checkout-item-quantity"
@@ -136,7 +112,6 @@ function renderCheckout() {
 
                 </div>
 
-
                 <span
                     class="checkout-item-price"
                 >
@@ -145,7 +120,6 @@ function renderCheckout() {
 
             `;
 
-
             container.appendChild(
                 element
             );
@@ -153,11 +127,9 @@ function renderCheckout() {
         }
     );
 
-
     updateSummary();
 
 }
-
 
 function renderEmptyCheckout() {
 
@@ -166,20 +138,15 @@ function renderEmptyCheckout() {
             "#checkout-items"
         );
 
-
     container.innerHTML = `
 
         <div class="checkout-empty">
-
             Your cart is empty.
-
         </div>
 
     `;
 
-
     updateSummary();
-
 }
 
 
@@ -187,42 +154,34 @@ function updateSummary() {
 
     let subtotal = 0;
 
-
     checkoutItems.forEach(
         item => {
-
             subtotal +=
                 Number(
                     item.food_price
                 ) *
                 item.quantity;
-
         }
     );
-
 
     const delivery =
         checkoutItems.length > 0
             ? DELIVERY_FEE
             : 0;
 
-
     const total =
         subtotal +
         delivery;
-
 
     document.querySelector(
         "#checkout-subtotal"
     ).textContent =
         `$${subtotal.toFixed(2)}`;
 
-
     document.querySelector(
         "#checkout-delivery"
     ).textContent =
         `$${delivery.toFixed(2)}`;
-
 
     document.querySelector(
         "#checkout-total"
@@ -231,7 +190,6 @@ function updateSummary() {
 
 }
 
-
 function setupCheckout() {
 
     const button =
@@ -239,11 +197,9 @@ function setupCheckout() {
             "#place-order-btn"
         );
 
-
     if (!button) {
         return;
     }
-
 
     button.addEventListener(
         "click",
@@ -252,24 +208,17 @@ function setupCheckout() {
 
 }
 
-
 async function handlePlaceOrder() {
-
-    // =========================
-    // Get form values
-    // =========================
 
     const fullName =
         document.querySelector(
             "#full-name"
         ).value.trim();
 
-
     const phone =
         document.querySelector(
             "#phone"
         ).value.trim();
-
 
     const address =
         document.querySelector(
@@ -282,19 +231,12 @@ async function handlePlaceOrder() {
             'input[name="payment"]:checked'
         )?.value;
 
-
-    // =========================
-    // Validate
-    // =========================
-
     if (!fullName) {
-
         alert(
             "Please enter your name."
         );
 
         return;
-
     }
 
 
@@ -305,7 +247,6 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
 
 
@@ -316,7 +257,6 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
 
 
@@ -327,7 +267,6 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
 
 
@@ -340,19 +279,12 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
-
-
-    // =========================
-    // Get selected cart IDs
-    // =========================
 
     const storedIds =
         sessionStorage.getItem(
             "checkout_item_ids"
         );
-
 
     if (!storedIds) {
 
@@ -361,12 +293,9 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
 
-
     let cartItemIds;
-
 
     try {
 
@@ -384,19 +313,13 @@ async function handlePlaceOrder() {
         );
 
         return;
-
     }
 
-
-    // =========================
-    // Place order
-    // =========================
-
     const button =
+
         document.querySelector(
             "#place-order-btn"
         );
-
 
     try {
 
@@ -406,18 +329,13 @@ async function handlePlaceOrder() {
             Placing Order...
         `;
 
-
         const result =
             await createOrder(
 
                 cartItemIds,
-
                 fullName,
-
                 phone,
-
                 address,
-
                 payment
 
             );
@@ -428,11 +346,6 @@ async function handlePlaceOrder() {
             result
         );
 
-
-        // =========================
-        // Clear checkout session
-        // =========================
-
         sessionStorage.removeItem(
             "checkout_items"
         );
@@ -441,19 +354,12 @@ async function handlePlaceOrder() {
             "checkout_item_ids"
         );
 
-
         alert(
             "Order placed successfully!"
         );
 
-
-        // =========================
-        // Go Bills
-        // =========================
-
         window.location.href =
             "../bills/bills.html";
-
 
     } catch (error) {
 
@@ -461,7 +367,6 @@ async function handlePlaceOrder() {
             "Place order error:",
             error
         );
-
 
         alert(
             error?.data?.detail ||
@@ -471,7 +376,6 @@ async function handlePlaceOrder() {
     } finally {
 
         button.disabled = false;
-
         button.innerHTML = `
 
             <ion-icon
@@ -481,7 +385,5 @@ async function handlePlaceOrder() {
             Place Order
 
         `;
-
     }
-
 }

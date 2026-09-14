@@ -10,7 +10,6 @@ from .serializers import NotificationSerializer
 class NotificationViewSet(
     viewsets.GenericViewSet
 ):
-
     serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated]
 
@@ -44,7 +43,6 @@ class NotificationViewSet(
         request,
         pk=None
     ):
-
         notification = self.get_object()
 
         notification.is_read = True
@@ -63,11 +61,11 @@ class NotificationViewSet(
         methods=["patch"],
         url_path="read-all"
     )
+
     def mark_all_as_read(
         self,
         request
     ):
-
         self.get_queryset().filter(
             is_read=False
         ).update(
@@ -86,11 +84,11 @@ class NotificationViewSet(
         methods=["get"],
         url_path="unread-count"
     )
+
     def unread_count(
         self,
         request
     ):
-
         count = self.get_queryset().filter(
             is_read=False
         ).count()
@@ -107,7 +105,6 @@ class NotificationViewSet(
         *args,
         **kwargs
     ):
-
         notification = self.get_object()
 
         notification.delete()

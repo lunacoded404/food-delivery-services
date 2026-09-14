@@ -446,22 +446,6 @@
         grid-template-columns: 1fr;
     }
 
-    .menu-toggle {
-        display: flex;
-        font-size: 20px;
-        background-color: var(--whiteColor);
-        color: var(--primaryColor);
-        justify-content: center;
-        align-items: center;
-        padding: 0 10px;
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 3;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
-    }
-
     body.sidebar-open .menu-toggle {
         position: fixed;
         left: 195px; 

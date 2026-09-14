@@ -28,7 +28,6 @@ class WalletViewSet(viewsets.ViewSet):
 
         return wallet
 
-    # GET /api/wallet/
     def list(self, request):
         wallet = self.get_wallet(request)
 
@@ -36,7 +35,6 @@ class WalletViewSet(viewsets.ViewSet):
 
         return Response(serializer.data)
 
-    # GET /api/wallet/transactions/
     @action(
         detail=False,
         methods=["get"],
@@ -60,7 +58,6 @@ class WalletViewSet(viewsets.ViewSet):
 
         return Response(serializer.data)
 
-    # POST /api/wallet/deposit/
     @action(
         detail=False,
         methods=["post"],
@@ -70,7 +67,6 @@ class WalletViewSet(viewsets.ViewSet):
 
         amount = request.data.get("amount")
 
-        # Không nhập amount
         if amount is None:
             return Response(
                 {
@@ -79,7 +75,6 @@ class WalletViewSet(viewsets.ViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Chuyển amount sang Decimal
         try:
             amount = Decimal(str(amount))
         except (InvalidOperation, ValueError):
@@ -90,7 +85,6 @@ class WalletViewSet(viewsets.ViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Không cho số tiền <= 0
         if amount <= 0:
             return Response(
                 {
@@ -99,19 +93,16 @@ class WalletViewSet(viewsets.ViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Làm tròn 2 chữ số thập phân
         amount = amount.quantize(
             Decimal("0.01")
         )
 
         with transaction.atomic():
 
-            # Lấy wallet hoặc tạo mới
             wallet = Wallet.objects.get_or_create(
                 user=request.user
             )[0]
 
-            # Cộng tiền vào wallet
             wallet.balance += amount
 
             wallet.save(
@@ -121,7 +112,6 @@ class WalletViewSet(viewsets.ViewSet):
                 ]
             )
 
-            # Tạo transaction
             WalletTransaction.objects.create(
                 wallet=wallet,
                 transaction_type=(
@@ -133,7 +123,6 @@ class WalletViewSet(viewsets.ViewSet):
                 description="Wallet deposit"
             )
 
-            # Tạo notification
             create_notification(
                 user=request.user,
                 notification_type=(
@@ -148,7 +137,6 @@ class WalletViewSet(viewsets.ViewSet):
                 )
             )
 
-        # Trả về wallet mới
         serializer = WalletSerializer(wallet)
 
         return Response(

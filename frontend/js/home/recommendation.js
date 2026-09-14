@@ -4,53 +4,13 @@ import {
 
 
 let recommendedFoods = [];
-
 let currentPage = 0;
-
 const ITEMS_PER_PAGE = 4;
 
-
-// export async function loadRecommendations() {
-
-//     try {
-
-//         recommendedFoods =
-//             await getRecommendedFoods();
-
-//         currentPage = 0;
-
-//         renderRecommendations();
-
-//         setupRecommendationButtons();
-
-//     } catch (error) {
-
-//         console.error(
-//             "Recommendation error:",
-//             error
-//         );
-
-
-//         const recommendationList =
-//             document.querySelector(
-//                 "#recommendation-list"
-//             );
-
-
-//         recommendationList.innerHTML = `
-//             <p>
-//                 Failed to load recommendations.
-//             </p>
-//         `;
-
-//     }
-
-// }
 
 export async function loadRecommendations() {
 
     try {
-
         recommendedFoods =
             await getRecommendedFoods();
 
@@ -65,9 +25,7 @@ export async function loadRecommendations() {
         );
 
         currentPage = 0;
-
         renderRecommendations();
-
         setupRecommendationButtons();
 
     } catch (error) {
@@ -87,9 +45,7 @@ export async function loadRecommendations() {
                 Failed to load recommendations.
             </p>
         `;
-
     }
-
 }
 
 function getTotalPages() {
@@ -98,7 +54,6 @@ function getTotalPages() {
         recommendedFoods.length /
         ITEMS_PER_PAGE
     );
-
 }
 
 function renderRecommendations() {
@@ -108,9 +63,7 @@ function renderRecommendations() {
             "#recommendation-list"
         );
 
-
     recommendationList.innerHTML = "";
-
 
     if (recommendedFoods.length === 0) {
 
@@ -119,14 +72,11 @@ function renderRecommendations() {
                 No recommendations available.
             </p>
         `;
-
         return;
     }
 
-
     const startIndex =
         currentPage * ITEMS_PER_PAGE;
-
 
     for (
         let i = 0;
@@ -138,21 +88,17 @@ function renderRecommendations() {
             (startIndex + i) %
             recommendedFoods.length;
 
-
         const food =
             recommendedFoods[foodIndex];
-
 
         const card =
             document.createElement(
                 "div"
             );
 
-
         card.classList.add(
             "highlight-card"
         );
-
 
         card.innerHTML = `
 
@@ -161,7 +107,6 @@ function renderRecommendations() {
                 alt="${food.name}"
                 class="highlight-img"
             >
-
 
             <div class="highlight-desc">
 
@@ -174,7 +119,6 @@ function renderRecommendations() {
                 </p>
 
             </div>
-
         `;
 
         card.addEventListener(
@@ -188,11 +132,8 @@ function renderRecommendations() {
         recommendationList.appendChild(
             card
         );
-
     }
-
 }
-
 
 function setupRecommendationButtons() {
 
@@ -201,28 +142,23 @@ function setupRecommendationButtons() {
             ".main-arrow"
         );
 
-
     if (!mainArrow) {
         return;
     }
-
 
     const backButton =
         mainArrow.querySelector(
             ".back"
         );
 
-
     const nextButton =
         mainArrow.querySelector(
             ".next"
         );
 
-
     if (!backButton || !nextButton) {
         return;
     }
-
 
     backButton.addEventListener(
         "click",
@@ -238,15 +174,11 @@ function setupRecommendationButtons() {
 
                 currentPage =
                     getTotalPages() - 1;
-
             }
 
-
             renderRecommendations();
-
         }
     );
-
 
     nextButton.addEventListener(
         "click",
@@ -258,21 +190,15 @@ function setupRecommendationButtons() {
             ) {
 
                 currentPage++;
-
             } else {
 
                 currentPage = 0;
-
             }
 
-
             renderRecommendations();
-
         }
     );
-
 }
-
 
 function updateRecommendationButtons() {
 
@@ -281,28 +207,23 @@ function updateRecommendationButtons() {
             ".main-arrow"
         );
 
-
     if (!mainArrow) {
         return;
     }
-
 
     const backButton =
         mainArrow.querySelector(
             ".back"
         );
 
-
     const nextButton =
         mainArrow.querySelector(
             ".next"
         );
 
-
     if (!backButton || !nextButton) {
         return;
     }
-
 
     const totalPages =
         Math.ceil(
@@ -310,28 +231,23 @@ function updateRecommendationButtons() {
             ITEMS_PER_PAGE
         );
 
-
     backButton.style.opacity =
         currentPage === 0
             ? "0.4"
             : "1";
-
 
     backButton.style.pointerEvents =
         currentPage === 0
             ? "none"
             : "auto";
 
-
     nextButton.style.opacity =
         currentPage >= totalPages - 1
             ? "0.4"
             : "1";
 
-
     nextButton.style.pointerEvents =
         currentPage >= totalPages - 1
             ? "none"
             : "auto";
-
 }

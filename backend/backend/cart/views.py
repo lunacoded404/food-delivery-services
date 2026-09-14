@@ -11,13 +11,11 @@ from .serializers import CartSerializer, CartItemSerializer
 class CartViewSet(
     viewsets.ViewSet
 ):
-
     permission_classes = [
         IsAuthenticated
     ]
 
     def get_cart(self, request):
-
         cart, created = Cart.objects.get_or_create(
             user=request.user
         )
@@ -26,9 +24,7 @@ class CartViewSet(
 
 
     def list(self, request):
-
         cart = self.get_cart(request)
-
         serializer = CartSerializer(
             cart,
             context={
@@ -40,16 +36,14 @@ class CartViewSet(
             serializer.data
         )
 
-
     @action(
         detail=False,
         methods=["delete"],
         url_path="clear"
     )
+
     def clear(self, request):
-
         cart = self.get_cart(request)
-
         cart.items.all().delete()
 
         return Response({
@@ -61,33 +55,24 @@ class CartViewSet(
 class CartItemViewSet(
     viewsets.ViewSet
 ):
-
     permission_classes = [
         IsAuthenticated
     ]
-
 
     def get_cart(
         self,
         request
     ):
-
         cart, created = Cart.objects.get_or_create(
             user=request.user
         )
 
         return cart
 
-
-    # =========================
-    # POST /api/cart/items/
-    # =========================
-
     def create(
         self,
         request
     ):
-
         food_id = request.data.get(
             "food_id"
         )
@@ -99,58 +84,46 @@ class CartItemViewSet(
             )
         )
 
-
         if not food_id:
-
             return Response(
                 {
                     "detail":
                     "food_id is required."
                 },
+
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-
         if quantity < 1:
-
             return Response(
                 {
                     "detail":
                     "Quantity must be at least 1."
                 },
+
                 status=status.HTTP_400_BAD_REQUEST
             )
-
 
         cart = self.get_cart(
             request
         )
 
-
         item, created = CartItem.objects.get_or_create(
-
             cart=cart,
-
             food_id=food_id,
-
             defaults={
                 "quantity": quantity
             }
-
         )
 
-
         if not created:
-
             item.quantity += quantity
-
             item.save(
                 update_fields=[
                     "quantity",
                     "updated_at"
                 ]
             )
-
 
         serializer = CartItemSerializer(
             item,
@@ -159,37 +132,27 @@ class CartItemViewSet(
             }
         )
 
-
         return Response(
             serializer.data,
             status=status.HTTP_200_OK
         )
-
-
-    # =========================
-    # PATCH /api/cart/items/:id/
-    # =========================
 
     def partial_update(
         self,
         request,
         pk=None
     ):
-
         cart = self.get_cart(
             request
         )
 
-
         try:
-
             item = CartItem.objects.get(
                 id=pk,
                 cart=cart
             )
 
         except CartItem.DoesNotExist:
-
             return Response(
                 {
                     "detail":
@@ -198,14 +161,11 @@ class CartItemViewSet(
                 status=status.HTTP_404_NOT_FOUND
             )
 
-
         quantity = request.data.get(
             "quantity"
         )
 
-
         if quantity is None:
-
             return Response(
                 {
                     "detail":
@@ -214,9 +174,7 @@ class CartItemViewSet(
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-
         try:
-
             quantity = int(
                 quantity
             )
@@ -225,7 +183,6 @@ class CartItemViewSet(
             TypeError,
             ValueError
         ):
-
             return Response(
                 {
                     "detail":
@@ -234,23 +191,14 @@ class CartItemViewSet(
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-
-        # Minimum = 1
-        quantity = max(
-            1,
-            quantity
-        )
-
-
+        quantity = max(1, quantity)
         item.quantity = quantity
-
         item.save(
             update_fields=[
                 "quantity",
                 "updated_at"
             ]
         )
-
 
         serializer = CartItemSerializer(
             item,
@@ -259,36 +207,26 @@ class CartItemViewSet(
             }
         )
 
-
         return Response(
             serializer.data
         )
-
-
-    # =========================
-    # DELETE /api/cart/items/:id/
-    # =========================
 
     def destroy(
         self,
         request,
         pk=None
     ):
-
         cart = self.get_cart(
             request
         )
 
-
         try:
-
             item = CartItem.objects.get(
                 id=pk,
                 cart=cart
             )
 
         except CartItem.DoesNotExist:
-
             return Response(
                 {
                     "detail":
@@ -297,9 +235,7 @@ class CartItemViewSet(
                 status=status.HTTP_404_NOT_FOUND
             )
 
-
         item.delete()
-
 
         return Response(
             status=status.HTTP_204_NO_CONTENT

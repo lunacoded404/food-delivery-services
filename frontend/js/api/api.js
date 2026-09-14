@@ -26,11 +26,6 @@ export async function apiRequest(
         }
     );
 
-
-    // =========================
-    // ACCESS TOKEN EXPIRED
-    // =========================
-
     if (
         response.status === 401 &&
         retry
@@ -40,7 +35,6 @@ export async function apiRequest(
 
         if (refreshed) {
 
-            // Gọi lại request ban đầu
             return await apiRequest(
                 endpoint,
                 options,
@@ -48,24 +42,13 @@ export async function apiRequest(
             );
         }
 
-        // Refresh token cũng hết hạn
         logout();
         return;
     }
 
-
-    // =========================
-    // NO CONTENT
-    // =========================
-
     if (response.status === 204) {
         return null;
     }
-
-
-    // =========================
-    // READ RESPONSE BODY
-    // =========================
 
     const contentType =
         response.headers.get("content-type") || "";
@@ -86,11 +69,6 @@ export async function apiRequest(
 
         responseData = null;
     }
-
-
-    // =========================
-    // OTHER ERRORS
-    // =========================
 
     if (!response.ok) {
 
@@ -119,11 +97,6 @@ export async function apiRequest(
 
     return responseData;
 }
-
-
-// =====================================
-// REFRESH ACCESS TOKEN
-// =====================================
 
 async function refreshAccessToken() {
 
@@ -182,11 +155,6 @@ async function refreshAccessToken() {
         return false;
     }
 }
-
-
-// =====================================
-// LOGOUT
-// =====================================
 
 function logout() {
 

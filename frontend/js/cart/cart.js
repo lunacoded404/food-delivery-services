@@ -11,31 +11,18 @@ import {
 
 
 let cart = null;
-
 let selectedItems = new Set();
 
-
-/* =========================
-   Initialize
-========================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
         await loadCart();
-
         setupClearCart();
-
         setupCheckout();
-
     }
 );
-
-
-/* =========================
-   Load Cart
-========================= */
 
 async function loadCart() {
 
@@ -48,7 +35,6 @@ async function loadCart() {
                     item => item.id
                 )
             );
-
 
         selectedItems.forEach(
             itemId => {
@@ -73,11 +59,6 @@ async function loadCart() {
     }
 }
 
-
-/* =========================
-   Render Cart
-========================= */
-
 function renderCart() {
 
     const cartList =
@@ -85,69 +66,45 @@ function renderCart() {
             "#cart-list"
         );
 
-
     cartList.innerHTML = "";
 
-
-    if (
-        !cart ||
-        cart.items.length === 0
-    ) {
+    if (!cart || cart.items.length === 0) {
 
         renderEmptyCart();
-
         updateSummary(0);
-
         return;
 
     }
 
-
     cart.items.forEach(
         item => {
-
             const element =
                 createCartItem(
                     item
                 );
-
             cartList.appendChild(
                 element
             );
-
         }
     );
 
-
     updateSelectedSummary();
-
 }
-
-
-/* =========================
-   Create Cart Item
-========================= */
 
 function createCartItem(
     item
 ) {
-
     const element =
         document.createElement(
             "div"
         );
 
-
     element.classList.add(
         "cart-item"
     );
 
-
     element.innerHTML = `
-
         <div class="cart-food">
-
-            <!-- Checkbox -->
 
             <input
                 type="checkbox"
@@ -156,7 +113,6 @@ function createCartItem(
                 ${selectedItems.has(item.id) ? "checked" : ""}
             >
 
-
             <img
                 src="${item.food_image}"
                 alt="${item.food_name}"
@@ -164,43 +120,29 @@ function createCartItem(
 
             <div class="cart-food-info">
 
-                <h4>
-                    ${item.food_name}
-                </h4>
+                <h4>${item.food_name}</h4>
 
-                <p>
-                    $${item.food_price}
-                </p>
+                <p>$${item.food_price}</p>
 
             </div>
 
         </div>
 
-
         <div class="cart-actions">
 
             <div class="quantity-control">
 
-                <button
-                    class="quantity-btn decrease"
-                >
+                <button class="quantity-btn decrease">
                     −
                 </button>
 
+                <span class="quantity">${item.quantity}</span>
 
-                <span class="quantity">
-                    ${item.quantity}
-                </span>
-
-
-                <button
-                    class="quantity-btn increase"
-                >
+                <button class="quantity-btn increase">
                     +
                 </button>
 
             </div>
-
 
             <span class="cart-item-total">
 
@@ -210,10 +152,7 @@ function createCartItem(
 
             </span>
 
-
-            <button
-                class="remove-btn"
-            >
+            <button class="remove-btn">
 
                 <ion-icon
                     name="trash-outline">
@@ -225,24 +164,16 @@ function createCartItem(
 
     `;
 
-
-    /* =========================
-       Checkbox
-    ========================= */
-
     const checkbox =
         element.querySelector(
             ".cart-select"
         );
 
-
     checkbox.onchange =
         () => {
-
             if (
                 checkbox.checked
             ) {
-
                 selectedItems.add(
                     item.id
                 );
@@ -252,44 +183,26 @@ function createCartItem(
                 selectedItems.delete(
                     item.id
                 );
-
             }
-
 
             updateSelectedSummary();
 
         };
-
-
-    /* =========================
-       Buttons
-    ========================= */
 
     const decreaseButton =
         element.querySelector(
             ".decrease"
         );
 
-
     const increaseButton =
         element.querySelector(
             ".increase"
         );
 
-
     const removeButton =
         element.querySelector(
             ".remove-btn"
         );
-
-
-    /* =========================
-       Decrease
-    ========================= */
-
-/* =========================
-   Decrease
-========================= */
 
     decreaseButton.onclick =
         async () => {
@@ -300,12 +213,10 @@ function createCartItem(
                         item.quantity - 1
                     );
 
-
                 await updateCartItem(
                     item.id,
                     newQuantity
                 );
-
 
                 await loadCart();
 
@@ -315,19 +226,11 @@ function createCartItem(
                     "Decrease cart item error:",
                     error
                 );
-
             }
-
         };
-
-
-    /* =========================
-       Increase
-    ========================= */
 
     increaseButton.onclick =
         async () => {
-
             try {
 
                 await updateCartItem(
@@ -335,39 +238,27 @@ function createCartItem(
                     item.quantity + 1
                 );
 
-
                 await loadCart();
 
             } catch (error) {
-
                 console.error(
                     "Increase cart item error:",
                     error
                 );
-
             }
-
         };
-
-
-    /* =========================
-       Remove
-    ========================= */
 
     removeButton.onclick =
         async () => {
-
             try {
 
                 await removeCartItem(
                     item.id
                 );
 
-
                 selectedItems.delete(
                     item.id
                 );
-
 
                 await loadCart();
 
@@ -377,20 +268,12 @@ function createCartItem(
                     "Remove cart item error:",
                     error
                 );
-
             }
-
         };
-
 
     return element;
 
 }
-
-
-/* =========================
-   Empty Cart
-========================= */
 
 function renderEmptyCart() {
 
@@ -399,18 +282,13 @@ function renderEmptyCart() {
             "#cart-list"
         );
 
-
     cartList.innerHTML = `
 
         <div class="empty-cart">
 
-            <ion-icon
-                name="cart-outline">
-            </ion-icon>
+            <ion-icon name="cart-outline"></ion-icon>
 
-            <h3>
-                Your cart is empty
-            </h3>
+            <h3>Your cart is empty</h3>
 
             <p>
                 Add some delicious food
@@ -418,39 +296,27 @@ function renderEmptyCart() {
             </p>
 
         </div>
-
     `;
-
 }
-
-
-/* =========================
-   Summary
-========================= */
 
 function updateSummary(
     subtotal
 ) {
-
     const deliveryFee = 0;
-
 
     const total =
         subtotal +
         deliveryFee;
-
 
     document.querySelector(
         "#cart-subtotal"
     ).textContent =
         `$${subtotal.toFixed(2)}`;
 
-
     document.querySelector(
         "#delivery-fee"
     ).textContent =
         `$${deliveryFee.toFixed(2)}`;
-
 
     document.querySelector(
         "#cart-total"
@@ -458,11 +324,6 @@ function updateSummary(
         `$${total.toFixed(2)}`;
 
 }
-
-
-/* =========================
-   Selected Summary
-========================= */
 
 function updateSelectedSummary() {
 
@@ -472,45 +333,32 @@ function updateSelectedSummary() {
     ) {
 
         updateSummary(0);
-
         return;
-
     }
-
 
     let subtotal = 0;
 
-
     cart.items.forEach(
         item => {
-
             if (
                 selectedItems.has(
                     item.id
                 )
             ) {
-
                 subtotal +=
                     Number(
                         item.subtotal
                     );
 
             }
-
         }
     );
-
 
     updateSummary(
         subtotal
     );
 
 }
-
-
-/* =========================
-   Clear Cart
-========================= */
 
 function setupClearCart() {
 
@@ -519,7 +367,6 @@ function setupClearCart() {
             "#clear-cart"
         );
 
-
     button.onclick =
         async () => {
 
@@ -527,20 +374,13 @@ function setupClearCart() {
                 !cart ||
                 cart.items.length === 0
             ) {
-
                 return;
-
             }
-
 
             try {
 
                 await clearCart();
-
-
                 selectedItems.clear();
-
-
                 await loadCart();
 
             } catch (error) {
@@ -549,17 +389,9 @@ function setupClearCart() {
                     "Clear cart error:",
                     error
                 );
-
             }
-
         };
-
 }
-
-
-/* =========================
-   Checkout
-========================= */
 
 function setupCheckout() {
 
@@ -567,7 +399,6 @@ function setupCheckout() {
         document.querySelector(
             "#checkout-btn"
         );
-
 
     button.onclick = () => {
 
@@ -583,7 +414,6 @@ function setupCheckout() {
             return;
         }
 
-
         const selectedCartItems =
             cart.items.filter(
                 item =>
@@ -591,7 +421,6 @@ function setupCheckout() {
                         item.id
                     )
             );
-
 
         if (
             selectedCartItems.length === 0
@@ -604,11 +433,6 @@ function setupCheckout() {
             return;
         }
 
-
-        // =========================
-        // Save selected items
-        // =========================
-
         sessionStorage.setItem(
             "checkout_items",
             JSON.stringify(
@@ -616,16 +440,10 @@ function setupCheckout() {
             )
         );
 
-
-        // =========================
-        // Save IDs
-        // =========================
-
         const cartItemIds =
             selectedCartItems.map(
                 item => item.id
             );
-
 
         sessionStorage.setItem(
             "checkout_item_ids",
@@ -634,14 +452,7 @@ function setupCheckout() {
             )
         );
 
-
-        // =========================
-        // Go checkout
-        // =========================
-
         window.location.href =
             "../checkout/checkout.html";
-
     };
-
 }

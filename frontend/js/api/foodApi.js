@@ -1,6 +1,5 @@
 import { apiRequest } from "./api.js";
 
-
 export async function getCategories() {
 
     return await apiRequest(
@@ -9,18 +8,14 @@ export async function getCategories() {
 
 }
 
-
 export async function getFoods(
     categoryId = null,
     search = ""
 ) {
-
     const params =
         new URLSearchParams();
 
-
     if (categoryId) {
-
         params.append(
             "category",
             categoryId
@@ -28,33 +23,26 @@ export async function getFoods(
 
     }
 
-
     if (search) {
 
         params.append(
             "search",
             search
         );
-
     }
 
-
-    const query =
-        params.toString();
-
+    const query = params.toString();
 
     const endpoint =
         query
             ? `/foods/?${query}`
             : "/foods/";
 
-
     return await apiRequest(
         endpoint
     );
 
 }
-
 
 export async function getRecommendedFoods() {
 
@@ -64,11 +52,9 @@ export async function getRecommendedFoods() {
 
 }
 
-
 export async function getFoodDetail(
     foodId
 ) {
-
     return await apiRequest(
         `/foods/${foodId}/`
     );

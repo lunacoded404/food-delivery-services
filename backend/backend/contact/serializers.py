@@ -6,7 +6,6 @@ from .models import ContactMessage
 class ContactMessageSerializer(
     serializers.ModelSerializer
 ):
-
     class Meta:
         model = ContactMessage
 
@@ -27,9 +26,7 @@ class ContactMessageSerializer(
         ]
 
     def validate_name(self, value):
-
         value = value.strip()
-
         if not value:
             raise serializers.ValidationError(
                 "Name is required."
@@ -38,9 +35,7 @@ class ContactMessageSerializer(
         return value
 
     def validate_subject(self, value):
-
         value = value.strip()
-
         if not value:
             raise serializers.ValidationError(
                 "Subject is required."
@@ -49,9 +44,7 @@ class ContactMessageSerializer(
         return value
 
     def validate_message(self, value):
-
         value = value.strip()
-
         if not value:
             raise serializers.ValidationError(
                 "Message is required."

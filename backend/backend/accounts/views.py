@@ -6,10 +6,12 @@ from rest_framework import (
 )
 
 from rest_framework.decorators import action
+
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
 )
+
 from rest_framework.response import Response
 
 from rest_framework_simplejwt.serializers import (
@@ -34,45 +36,31 @@ from .serializers import (
     ChangePasswordSerializer,
 )
 
-
 User = get_user_model()
-
-
-# =====================================
-# AUTH VIEWSET
-# =====================================
 
 class AuthViewSet(
     viewsets.GenericViewSet
 ):
-
     def get_permissions(self):
-
         if self.action in [
             "register",
             "login",
             "refresh",
         ]:
-
             return [AllowAny()]
 
         return [IsAuthenticated()]
-
-    # ---------------------------------
-    # REGISTER
-    # POST /api/auth/register/
-    # ---------------------------------
 
     @action(
         detail=False,
         methods=["post"],
         url_path="register"
     )
+
     def register(
         self,
         request
     ):
-
         serializer = RegisterSerializer(
             data=request.data
         )
@@ -97,21 +85,16 @@ class AuthViewSet(
             status=status.HTTP_201_CREATED
         )
 
-    # ---------------------------------
-    # LOGIN
-    # POST /api/auth/login/
-    # ---------------------------------
-
     @action(
         detail=False,
         methods=["post"],
         url_path="login"
     )
+
     def login(
         self,
         request
     ):
-
         serializer = LoginSerializer(
             data=request.data
         )
@@ -129,15 +112,11 @@ class AuthViewSet(
         )
 
         return Response({
+            "message": "Login successful.",
 
-            "message":
-                "Login successful.",
+            "access": str(refresh.access_token),
 
-            "access":
-                str(refresh.access_token),
-
-            "refresh":
-                str(refresh),
+            "refresh": str(refresh),
 
             "user": {
                 "id": user.id,
@@ -149,21 +128,16 @@ class AuthViewSet(
             }
         })
 
-    # ---------------------------------
-    # REFRESH
-    # POST /api/auth/refresh/
-    # ---------------------------------
-
     @action(
         detail=False,
         methods=["post"],
         url_path="refresh"
     )
+
     def refresh(
         self,
         request
     ):
-
         serializer = TokenRefreshSerializer(
             data=request.data
         )
@@ -176,57 +150,38 @@ class AuthViewSet(
             serializer.validated_data
         )
 
-    # ---------------------------------
-    # ME
-    # GET /api/auth/me/
-    # ---------------------------------
-
     @action(
         detail=False,
         methods=["get"],
         url_path="me"
     )
+
     def me(
         self,
         request
     ):
-
         user = request.user
-
         return Response({
-
             "id": user.id,
-
-            "username":
-                user.username,
-
-            "email":
-                user.email,
-
-            "first_name":
-                user.first_name,
-
-            "last_name":
-                user.last_name,
-
-            "phone":
-                user.phone,
-
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone": user.phone,
             "avatar":
                 (
                     request.build_absolute_uri(
                         user.avatar.url
                     )
+
                     if user.avatar
                     else None
                 ),
         })
 
 
-# =====================================
-# ACCOUNT VIEWSET
-# =====================================
 class AccountViewSet(viewsets.ViewSet):
+
     permission_classes = [IsAuthenticated]
 
     @action(
@@ -234,6 +189,7 @@ class AccountViewSet(viewsets.ViewSet):
         methods=["get", "patch"],
         url_path="profile"
     )
+
     def profile(self, request):
         user = request.user
 
@@ -242,7 +198,6 @@ class AccountViewSet(viewsets.ViewSet):
                 user,
                 context={"request": request}
             )
-
             return Response(serializer.data)
 
         serializer = ProfileSerializer(
@@ -254,14 +209,12 @@ class AccountViewSet(viewsets.ViewSet):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-
         user.refresh_from_db()
 
         serializer = ProfileSerializer(
             user,
             context={"request": request}
         )
-
         return Response(serializer.data)
 
     @action(
@@ -269,6 +222,7 @@ class AccountViewSet(viewsets.ViewSet):
         methods=["get", "patch"],
         url_path="settings"
     )
+
     def user_settings(self, request):
         settings, created = UserSettings.objects.get_or_create(
             user=request.user
@@ -276,7 +230,6 @@ class AccountViewSet(viewsets.ViewSet):
 
         if request.method == "GET":
             serializer = UserSettingsSerializer(settings)
-
             return Response(serializer.data)
 
         serializer = UserSettingsSerializer(
@@ -295,6 +248,7 @@ class AccountViewSet(viewsets.ViewSet):
         methods=["post"],
         url_path="change-password"
     )
+
     def change_password(self, request):
         serializer = ChangePasswordSerializer(
             data=request.data,
@@ -302,35 +256,26 @@ class AccountViewSet(viewsets.ViewSet):
         )
 
         serializer.is_valid(raise_exception=True)
-
         user = request.user
-
         user.set_password(
             serializer.validated_data["new_password"]
         )
-
         user.save(update_fields=["password"])
 
         return Response({
             "message": "Password changed successfully."
         })
-    
-# =====================================
-# ADDRESS VIEWSET
-# =====================================
 
+    
 class AddressViewSet(
     viewsets.ModelViewSet
 ):
-
     serializer_class = AddressSerializer
-
     permission_classes = [
         IsAuthenticated
     ]
 
     def get_queryset(self):
-
         return Address.objects.filter(
             user=self.request.user
         )
@@ -339,7 +284,6 @@ class AddressViewSet(
         self,
         serializer
     ):
-
         has_address = Address.objects.filter(
             user=self.request.user
         ).exists()
@@ -353,16 +297,13 @@ class AddressViewSet(
         self,
         serializer
     ):
-
         instance = serializer.instance
-
         is_default = serializer.validated_data.get(
             "is_default",
             instance.is_default
         )
 
         if is_default:
-
             Address.objects.filter(
                 user=self.request.user
             ).exclude(
@@ -373,16 +314,12 @@ class AddressViewSet(
 
         serializer.save()
 
-    # ---------------------------------
-    # SET DEFAULT
-    # PATCH /api/addresses/{id}/default/
-    # ---------------------------------
-
     @action(
         detail=True,
         methods=["patch"],
         url_path="default"
     )
+
     def set_default(
         self,
         request,
@@ -390,7 +327,6 @@ class AddressViewSet(
     ):
 
         address = self.get_object()
-
         Address.objects.filter(
             user=request.user
         ).update(
@@ -398,7 +334,6 @@ class AddressViewSet(
         )
 
         address.is_default = True
-
         address.save(
             update_fields=[
                 "is_default"

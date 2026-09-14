@@ -1,14 +1,11 @@
 import { apiRequest } from "../api/api.js";
 
-
 let order = null;
-
 
 document.addEventListener(
     "DOMContentLoaded",
     loadOrder
 );
-
 
 async function loadOrder() {
 
@@ -35,7 +32,6 @@ async function loadOrder() {
         return;
     }
 
-
     try {
 
         order =
@@ -60,7 +56,6 @@ async function loadOrder() {
 
 }
 
-
 function renderOrder(order) {
 
     const container =
@@ -68,10 +63,8 @@ function renderOrder(order) {
             "#bill-detail"
         );
 
-
     const date =
         new Date(order.created_at);
-
 
     const dateText =
         date.toLocaleDateString(
@@ -83,7 +76,6 @@ function renderOrder(order) {
             }
         );
 
-
     const timeText =
         date.toLocaleTimeString(
             "en-US",
@@ -93,13 +85,11 @@ function renderOrder(order) {
             }
         );
 
-
     container.innerHTML = `
 
         <div class="bill-detail-header">
 
             <div>
-
                 <h2 class="main-title">
                     Order Details
                 </h2>
@@ -109,16 +99,11 @@ function renderOrder(order) {
                     #ORD-${String(
                         order.id
                     ).padStart(5, "0")}
-
                     ·
-
                     ${dateText}
                     ${timeText}
-
                 </p>
-
             </div>
-
 
             <span
                 class="
@@ -126,49 +111,32 @@ function renderOrder(order) {
                     ${order.status.toLowerCase()}
                 "
             >
-
                 ${order.status_display}
-
             </span>
-
         </div>
-
 
         <div class="bill-detail-grid">
 
-
             <!-- LEFT -->
-
             <div>
-
 
                 <!-- ORDER ITEMS -->
 
                 <div class="bill-detail-card">
 
-                    <h3>
-                        Order Items
-                    </h3>
-
+                    <h3>Order Items</h3>
                     <div>
-
                         ${renderItems(
                             order.items
                         )}
-
                     </div>
 
                 </div>
 
-
                 <!-- DELIVERY -->
 
                 <div class="bill-detail-card">
-
-                    <h3>
-                        Delivery Information
-                    </h3>
-
+                    <h3>Delivery Information</h3>
 
                     <div class="detail-info-row">
 
@@ -182,7 +150,6 @@ function renderOrder(order) {
 
                     </div>
 
-
                     <div class="detail-info-row">
 
                         <span class="detail-info-label">
@@ -195,7 +162,6 @@ function renderOrder(order) {
 
                     </div>
 
-
                     <div class="detail-info-row">
 
                         <span class="detail-info-label">
@@ -207,7 +173,6 @@ function renderOrder(order) {
                         </span>
 
                     </div>
-
 
                     <div class="detail-info-row">
 
@@ -223,14 +188,11 @@ function renderOrder(order) {
 
                 </div>
 
-
                 <!-- STATUS -->
 
                 <div class="bill-detail-card">
 
-                    <h3>
-                        Order Status
-                    </h3>
+                    <h3>Order Status</h3>
 
                     ${renderTimeline(
                         order.status
@@ -238,14 +200,11 @@ function renderOrder(order) {
 
                 </div>
 
-
             </div>
-
 
             <!-- RIGHT -->
 
             <div>
-
 
                 <!-- SUMMARY -->
 
@@ -254,7 +213,6 @@ function renderOrder(order) {
                     <h3>
                         Order Summary
                     </h3>
-
 
                     <div class="detail-summary-row">
 
@@ -270,14 +228,12 @@ function renderOrder(order) {
 
                     </div>
 
-
                     <div
                         class="
                             detail-summary-row
                             delivery
                         "
                     >
-
                         <span>
                             Delivery Fee
                         </span>
@@ -289,7 +245,6 @@ function renderOrder(order) {
                         </span>
 
                     </div>
-
 
                     <div
                         class="
@@ -311,15 +266,11 @@ function renderOrder(order) {
 
                 </div>
 
-
                 <!-- PAYMENT -->
 
                 <div class="bill-detail-card">
 
-                    <h3>
-                        Payment
-                    </h3>
-
+                    <h3>Payment</h3>
 
                     <div class="detail-info-row">
 
@@ -332,7 +283,6 @@ function renderOrder(order) {
                         </span>
 
                     </div>
-
 
                     <div class="detail-info-row">
 
@@ -348,14 +298,11 @@ function renderOrder(order) {
 
                 </div>
 
-
             </div>
-
 
         </div>
     `;
 }
-
 
 function renderItems(items) {
 
@@ -363,7 +310,6 @@ function renderItems(items) {
         item => {
 
             return `
-
                 <div class="detail-item">
 
                     <img
@@ -372,13 +318,11 @@ function renderItems(items) {
                         class="detail-item-image"
                     >
 
-
                     <div
                         class="
                             detail-item-info
                         "
                     >
-
                         <h4>
                             ${item.food_name}
                         </h4>
@@ -393,13 +337,11 @@ function renderItems(items) {
 
                     </div>
 
-
                     <span
                         class="
                             detail-item-price
                         "
                     >
-
                         $${Number(
                             item.subtotal
                         ).toFixed(2)}
@@ -407,13 +349,11 @@ function renderItems(items) {
                     </span>
 
                 </div>
-
             `;
         }
     ).join("");
 
 }
-
 
 function calculateSubtotal(items) {
 
@@ -478,20 +418,15 @@ function renderTimeline(status) {
 
 
     return `
-
         <div class="order-timeline">
-
             ${steps.map(
                 (
                     step,
                     index
                 ) => {
-
                     const active =
                         index <= statusIndex;
-
                     return `
-
                         <div
                             class="
                                 timeline-step
@@ -500,13 +435,11 @@ function renderTimeline(status) {
                                     : ""}
                             "
                         >
-
                             <div
                                 class="
                                     timeline-icon
                                 "
                             >
-
                                 <ion-icon
                                     name="${step.icon}">
                                 </ion-icon>
@@ -518,17 +451,13 @@ function renderTimeline(status) {
                             </span>
 
                         </div>
-
                     `;
-
                 }
             ).join("")}
 
         </div>
-
     `;
 }
-
 
 function renderError(message) {
 

@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Wallet, WalletTransaction
 
-
 class WalletSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -12,7 +11,6 @@ class WalletSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
-
 
 class WalletTransactionSerializer(serializers.ModelSerializer):
 

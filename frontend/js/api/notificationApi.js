@@ -1,6 +1,5 @@
 import { apiRequest } from "./api.js";
 
-
 export async function getNotifications() {
 
     return await apiRequest(
@@ -8,7 +7,6 @@ export async function getNotifications() {
     );
 
 }
-
 
 export async function getUnreadCount() {
 
@@ -18,11 +16,9 @@ export async function getUnreadCount() {
 
 }
 
-
 export async function markNotificationAsRead(
     notificationId
 ) {
-
     return await apiRequest(
         `/notifications/${notificationId}/read/`,
         {
@@ -31,7 +27,6 @@ export async function markNotificationAsRead(
     );
 
 }
-
 
 export async function markAllNotificationsAsRead() {
 
@@ -48,7 +43,6 @@ export async function markAllNotificationsAsRead() {
 export async function deleteNotification(
     notificationId
 ) {
-
     return await apiRequest(
         `/notifications/${notificationId}/`,
         {

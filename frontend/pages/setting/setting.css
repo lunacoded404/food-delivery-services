@@ -6,9 +6,6 @@
     padding-bottom: 3rem;
 }
 
-/* ================================
-   NAVBAR
-================================ */
 
 .main-navbar {
     display: flex;
@@ -25,9 +22,6 @@
     gap: 15px;
 }
 
-/* =========================================
-   PAGE HEADER
-========================================= */
 
 .setting-page-header {
     margin-top: 1rem; 
@@ -44,11 +38,6 @@
     color: var(--grayColor);
     font-size: 0.9rem;
 }
-
-
-/* =========================================
-   SECTION
-========================================= */
 
 .setting-section {
     margin-bottom: 2.5rem;
@@ -82,31 +71,17 @@
     gap: 1rem;
 }
 
-
-/* =========================================
-   CARD
-========================================= */
-
 .setting-card {
     width: 100%;
     padding: 1.5rem;
-
     box-sizing: border-box;
-
     background-color: var(--whiteColor);
-
     border-radius: 15px;
-
     box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.04);
 
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
-
-
-/* =========================================
-   PROFILE AVATAR
-========================================= */
 
 .profile-avatar {
     display: flex;
@@ -119,24 +94,17 @@
 .avatar-wrapper {
     width: 105px;
     height: 105px;
-
     margin-bottom: 0.8rem;
-
     overflow: hidden;
-
     border-radius: 50%;
-
     border: 3px solid var(--primaryColor);
-
     background-color: #f5f5f5;
 }
 
 .avatar {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
 }
 
@@ -144,20 +112,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 0.5rem 1rem;
-
     border: 1px solid var(--primaryColor);
-
     border-radius: 20px;
-
     color: var(--primaryColor);
-
     cursor: pointer;
-
     font-size: 0.8rem;
     font-weight: 500;
-
     transition: 0.2s ease;
 }
 
@@ -168,16 +129,9 @@
 
 .profile-avatar p {
     margin-top: 0.5rem;
-
     color: var(--grayColor);
-
     font-size: 0.75rem;
 }
-
-
-/* =========================================
-   FORM GRID
-========================================= */
 
 .form-grid {
     display: grid;
@@ -188,17 +142,10 @@
     gap: 1.2rem;
 }
 
-
-/* =========================================
-   FORM
-========================================= */
-
 .form-group {
     display: flex;
     flex-direction: column;
-
     gap: 0.45rem;
-
     margin-bottom: 1.1rem;
 }
 
@@ -210,21 +157,13 @@
 .form-group input,
 .form-group textarea {
     width: 100%;
-
     box-sizing: border-box;
-
     padding: 0.75rem 0.9rem;
-
     border: 1px solid #dedede;
-
     border-radius: 8px;
-
     outline: none;
-
     background-color: var(--whiteColor);
-
     color: var(--blackColor);
-
     font-family: inherit;
     font-size: 0.85rem;
 
@@ -235,7 +174,6 @@
 
 .form-group textarea {
     min-height: 100px;
-
     resize: vertical;
 }
 
@@ -249,11 +187,10 @@
 
 .form-group input:disabled {
     background-color: #f5f5f5;
-
     color: #888;
-
     cursor: not-allowed;
 }
+
 .form-group #username {
     background-color: #EEEEEE;
 }
@@ -263,44 +200,26 @@
 
 .input-hint {
     color: var(--grayColor);
-
     font-size: 0.7rem;
 }
-
-
-/* =========================================
-   FORM FOOTER
-========================================= */
 
 .form-footer {
     display: flex;
     justify-content: flex-end;
-
     margin-top: 0.5rem;
 }
-
-
-/* =========================================
-   PRIMARY BUTTON
-========================================= */
 
 .primary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     gap: 0.4rem;
-
     padding: 0.7rem 1.1rem;
-
     border: none;
     border-radius: 8px;
-
     background-color: var(--primaryColor);
     color: var(--whiteColor);
-
     cursor: pointer;
-
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
@@ -312,30 +231,19 @@
 
 .primary-button:hover {
     opacity: 0.9;
-
     transform: translateY(-1px);
 }
-
-
-/* =========================================
-   SECONDARY BUTTON
-========================================= */
 
 .secondary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 0.7rem 1.1rem;
-
     border: 1px solid #ddd;
     border-radius: 8px;
-
     background-color: var(--whiteColor);
     color: var(--blackColor);
-
     cursor: pointer;
-
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 500;
@@ -345,36 +253,20 @@
     background-color: #f5f5f5;
 }
 
-
-/* =========================================
-   ADDRESS LIST
-========================================= */
-
 .address-list {
     display: flex;
     flex-direction: column;
-
     gap: 1rem;
 }
-
-
-/* =========================================
-   ADDRESS CARD
-========================================= */
 
 .address-card {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 1.5rem;
-
     padding: 1.25rem;
-
     background-color: var(--whiteColor);
-
     border: 1px solid rgba(0, 0, 0, 0.05);
-
     border-radius: 15px;
 
     box-shadow:
@@ -383,7 +275,6 @@
 
 .address-info {
     flex: 1;
-
     min-width: 0;
 }
 
@@ -391,9 +282,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
     gap: 0.6rem;
-
     margin-bottom: 0.7rem;
 }
 
@@ -405,77 +294,49 @@
 .address-info p {
     display: flex;
     align-items: flex-start;
-
     gap: 0.5rem;
-
     margin: 0.45rem 0;
-
     color: var(--grayColor);
-
     font-size: 0.82rem;
-
     line-height: 1.5;
-
     word-break: break-word;
 }
 
 .address-info ion-icon {
     flex-shrink: 0;
-
     margin-top: 2px;
-
     font-size: 1rem;
 }
-
-
-/* =========================================
-   DEFAULT BADGE
-========================================= */
 
 .default-badge {
     display: inline-flex;
     align-items: center;
-
     padding: 0.25rem 0.6rem;
-
     border-radius: 20px;
-
     background-color: var(--primaryColor);
-
     color: var(--whiteColor);
-
     font-size: 0.65rem;
     font-weight: 600;
 }
-
-
-/* =========================================
-   ADDRESS ACTIONS
-========================================= */
 
 .address-actions {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
     gap: 0.5rem;
-
     min-width: 120px;
 }
 
 .address-actions button {
     padding: 0;
-
     border: none;
-
     background: none;
-
     cursor: pointer;
-
     font-family: inherit;
     font-size: 0.78rem;
     font-weight: 500;
 }
+
 .address-actions {
     display: flex; 
     align-items: center; 
@@ -507,20 +368,11 @@
     text-decoration: underline;
 }
 
-
-/* =========================================
-   EMPTY ADDRESS
-========================================= */
-
 .empty-address {
     padding: 2rem;
-
     border-radius: 15px;
-
     background-color: var(--whiteColor);
-
     text-align: center;
-
     color: var(--grayColor);
 
     box-shadow:
@@ -531,11 +383,6 @@
     font-size: 0.85rem;
 }
 
-
-/* =========================================
-   SETTINGS LIST
-========================================= */
-
 .settings-list {
     padding-top: 0;
     padding-bottom: 0;
@@ -545,11 +392,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 1rem;
-
     padding: 1.2rem 0;
-
     border-bottom: 1px solid #eee;
 }
 
@@ -560,9 +404,7 @@
 .setting-item-info {
     display: flex;
     align-items: center;
-
     gap: 1rem;
-
     min-width: 0;
 }
 
@@ -570,90 +412,60 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 42px;
     height: 42px;
-
     flex-shrink: 0;
-
     border-radius: 10px;
-
     background-color: rgba(0, 0, 0, 0.04);
-
     color: var(--primaryColor);
-
     font-size: 1.2rem;
 }
 
 .setting-item-info h3 {
     margin-bottom: 0.25rem;
-
     font-size: 0.9rem;
     font-weight: 600;
 }
 
 .setting-item-info p {
     color: var(--grayColor);
-
     font-size: 0.78rem;
-
     line-height: 1.4;
 }
 
-
-/* =========================================
-   SWITCH
-========================================= */
-
 .switch {
     position: relative;
-
     display: inline-block;
-
     width: 48px;
     height: 26px;
-
     flex-shrink: 0;
-
     cursor: pointer;
 }
 
 .switch input {
     width: 0;
     height: 0;
-
     opacity: 0;
 }
 
 .slider {
     position: absolute;
-
     inset: 0;
-
     border-radius: 30px;
-
     background-color: #ccc;
-
     cursor: pointer;
-
     transition: 0.25s ease;
 }
 
 .slider::before {
     content: "";
-
     position: absolute;
-
     width: 20px;
     height: 20px;
-
     left: 3px;
     top: 3px;
-
     border-radius: 50%;
-
     background-color: #fff;
-
     transition: 0.25s ease;
 
     box-shadow:
@@ -667,15 +479,6 @@
 .switch input:checked + .slider::before {
     transform: translateX(22px);
 }
-
-
-/* =========================================
-   PASSWORD
-========================================= */
-
-/* =========================
-   SECURITY
-========================= */
 
 #password-form {
     display: flex;
@@ -698,15 +501,11 @@
     width: 300px; 
     height: 46px;
     padding: 0 14px;
-
     border: 1px solid #ddd;
     border-radius: 8px;
-
     background: #fff;
     color: #333;
-
     font-size: 14px;
-
     outline: none;
 
     transition:
@@ -724,8 +523,6 @@
     box-shadow:
         0 0 0 3px rgba(14, 98, 83, 0.1);
 }
-
-/* Change Password button */
 
 #password-form .save-btn {
     
@@ -764,16 +561,10 @@
     cursor: not-allowed;
 }
 
-
-/* =========================================
-   ACCOUNT
-========================================= */
-
 .account-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 1rem;
 }
 
@@ -782,53 +573,36 @@
 }
 
 .logout-button {
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 0.7rem 1.1rem;
-
     border: 1px solid #e74c3c;
-
     border-radius: 8px;
-
     background-color: transparent;
-
     color: #e74c3c;
-
     cursor: pointer;
-
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
-
     transition: 0.2s ease;
+
 }
 
 .logout-button:hover {
     background-color: #e74c3c;
-
     color: white;
 }
 
-
-/* =========================================
-   MODAL
-========================================= */
-
 .modal {
     position: fixed;
-
     inset: 0;
-
     display: none;
     align-items: center;
     justify-content: center;
-
     padding: 1rem;
-
     background-color: rgba(0, 0, 0, 0.45);
-
     z-index: 1000;
 }
 
@@ -839,17 +613,11 @@
 .modal-content {
     width: 100%;
     max-width: 500px;
-
     max-height: 90vh;
-
     overflow-y: auto;
-
     padding: 1.5rem;
-
     box-sizing: border-box;
-
     border-radius: 15px;
-
     background-color: var(--whiteColor);
 
     box-shadow:
@@ -877,30 +645,23 @@
     }
 }
 
-
-/* =========================================
-   MODAL HEADER
-========================================= */
-
 .modal-header {
+
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 1rem;
-
     margin-bottom: 1.5rem;
+
 }
 
 .modal-header h3 {
     margin-bottom: 0.3rem;
-
     font-size: 1.1rem;
 }
 
 .modal-header p {
     color: var(--grayColor);
-
     font-size: 0.78rem;
 }
 
@@ -908,26 +669,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 32px;
     height: 32px;
-
     flex-shrink: 0;
-
     padding: 0;
-
     border: none;
-
     background: transparent;
-
     color: var(--blackColor);
-
     cursor: pointer;
-
     font-size: 1.4rem;
-
     border-radius: 50%;
-
     transition: 0.2s ease;
 }
 
@@ -935,66 +686,37 @@
     background-color: #f2f2f2;
 }
 
-
-/* =========================================
-   DEFAULT CHECKBOX
-========================================= */
-
 .default-checkbox {
     display: flex;
     align-items: center;
-
     gap: 0.5rem;
-
     margin-top: 0.2rem;
-
     cursor: pointer;
-
     font-size: 0.8rem;
 }
 
 .default-checkbox input {
     width: 16px;
     height: 16px;
-
     accent-color: var(--primaryColor);
-
     cursor: pointer;
 }
-
-
-/* =========================================
-   MODAL ACTIONS
-========================================= */
 
 .modal-actions {
     display: flex;
     justify-content: flex-end;
-
     gap: 0.7rem;
-
     margin-top: 1.5rem;
 }
 
-
-/* =========================================
-   MESSAGE
-========================================= */
-
 .setting-message {
     position: fixed;
-
     top: 20px;
     right: 20px;
-
     z-index: 2000;
-
     padding: 0.8rem 1.2rem;
-
     border-radius: 8px;
-
     color: white;
-
     font-size: 0.8rem;
 
     box-shadow:
@@ -1028,10 +750,6 @@
     }
 }
 
-/* =========================================
-   RESPONSIVE - 900px
-========================================= */
-
 @media screen and (max-width: 900px) {
 
     #password-form {
@@ -1051,10 +769,6 @@
 
 }
 
-
-/* =========================================
-   RESPONSIVE - 768px
-========================================= */
 
 @media screen and (max-width: 768px) {
 
@@ -1097,10 +811,6 @@
 
 }
 
-
-/* =========================================
-   RESPONSIVE - 640px
-========================================= */
 
 @media screen and (max-width: 640px) {
 
@@ -1189,7 +899,7 @@
         left: 15px;
         right: 15px;
 
-        top: 15px;
+        top: 15px;z 
 
         text-align: center;
     }

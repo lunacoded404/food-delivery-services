@@ -6,7 +6,6 @@ import {
 export async function updateCartBadge(
     cart = null
 ) {
-
     const cartCount =
         document.querySelector(
             "#cart-count"
@@ -15,17 +14,13 @@ export async function updateCartBadge(
     if (!cartCount) {
         return;
     }
-
     try {
-
         if (!cart) {
-
             const token =
                 localStorage.getItem(
                     "access_token"
                 );
 
-            // Chưa đăng nhập
             if (!token) {
                 cartCount.textContent = "0";
                 cartCount.style.display = "none";
@@ -35,17 +30,13 @@ export async function updateCartBadge(
             cart = await getCart();
         }
 
-        // Đếm số sản phẩm khác nhau
-        const count =
-            cart.items.length;
+        const count = cart.items.length;
 
-        cartCount.textContent =
-            count;
+        cartCount.textContent = count;
 
         if (count === 0) {
 
-            cartCount.style.display =
-                "none";
+            cartCount.style.display = "none";
 
         } else {
 
@@ -59,7 +50,7 @@ export async function updateCartBadge(
             "Cart badge error:",
             error
         );
-
+  
         cartCount.textContent =
             "0";
 

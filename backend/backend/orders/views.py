@@ -1,5 +1,4 @@
 from decimal import Decimal
-
 from django.db import transaction
 
 from rest_framework import (
@@ -8,17 +7,11 @@ from rest_framework import (
 )
 
 from rest_framework.permissions import IsAuthenticated
-
 from rest_framework.response import Response
-
 from .models import Order, OrderItem
-
 from .serializers import OrderSerializer
-
 from cart.models import CartItem
-
 from wallet.models import Wallet, WalletTransaction
-
 
 DELIVERY_FEE = Decimal("5.00")
 
@@ -27,6 +20,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [
         IsAuthenticated
     ]
+    
     serializer_class = OrderSerializer
 
     def get_queryset(self):

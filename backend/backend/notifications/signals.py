@@ -2,7 +2,6 @@ from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
 from orders.models import Order
-
 from .models import Notification
 from .services import create_notification
 
@@ -35,9 +34,7 @@ def order_post_save(
     created,
     **kwargs
 ):
-
     if created:
-
         create_notification(
             user=instance.user,
             notification_type=Notification.NotificationType.ORDER,
@@ -51,7 +48,6 @@ def order_post_save(
 
         return
 
-
     old_status = getattr(
         instance,
         "_old_status",
@@ -62,22 +58,17 @@ def order_post_save(
         old_status
         and old_status != instance.status
     ):
-
         status_messages = {
-            Order.Status.CONFIRMED:
-                "Your order has been confirmed.",
+            
+            Order.Status.CONFIRMED: "Your order has been confirmed.",
 
-            Order.Status.PREPARING:
-                "Your order is being prepared.",
+            Order.Status.PREPARING: "Your order is being prepared.",
 
-            Order.Status.OUT_FOR_DELIVERY:
-                "Your order is out for delivery.",
+            Order.Status.OUT_FOR_DELIVERY: "Your order is out for delivery.",
 
-            Order.Status.DELIVERED:
-                "Your order has been delivered.",
+            Order.Status.DELIVERED: "Your order has been delivered.",
 
-            Order.Status.CANCELLED:
-                "Your order has been cancelled.",
+            Order.Status.CANCELLED: "Your order has been cancelled.",
         }
 
         message = status_messages.get(
@@ -85,7 +76,6 @@ def order_post_save(
         )
 
         if message:
-
             create_notification(
                 user=instance.user,
                 notification_type=Notification.NotificationType.ORDER,
@@ -94,5 +84,6 @@ def order_post_save(
                     f"Order #{instance.id}: "
                     f"{message}"
                 ),
+
                 order=instance
             )
